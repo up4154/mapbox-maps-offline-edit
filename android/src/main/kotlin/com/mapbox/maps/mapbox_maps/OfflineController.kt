@@ -46,7 +46,7 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
     it.setOption(
       TileStoreOptions.MAPBOX_ACCESS_TOKEN,
       TileDataDomain.MAPS,
-      Value("sk.eyJ1IjoidXRzYXYwMSIsImEiOiJjbGxxaGpyODMwZm1iM2xucTRlNm50Z3VyIn0.nwJsKg7SRRadPCG39QRPjg")
+      Value(mapView.context.getString(R.string.mapbox_access_token)
 
     )
   }
