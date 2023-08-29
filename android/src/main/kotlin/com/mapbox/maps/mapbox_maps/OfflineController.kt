@@ -46,7 +46,7 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
     it.setOption(
       TileStoreOptions.MAPBOX_ACCESS_TOKEN,
       TileDataDomain.MAPS,
-      Value("pk.eyJ1IjoidXRzYXYwMSIsImEiOiJjbGt0bTFsdzIwMWZoM2tsb3dkZHN0M2Z6In0.NVX_ZAS6j9Jn5e_5h3Z-CQ")
+      Value("sk.eyJ1IjoidXRzYXYwMSIsImEiOiJjbGwyMmQwMXQwd2szM29wMzZueXl4ejBwIn0.aWDCoRxRA_1o5luDfZIF6A")
     )
   }
   private lateinit var coordinateJson: JSONObject
