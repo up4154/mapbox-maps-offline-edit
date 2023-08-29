@@ -8179,6 +8179,305 @@ public class FLTMapInterfaces {
       }
     }
   }
+
+  public static class OfflineManagerCodec extends StandardMessageCodec{
+    public static final OfflineManagerCodec INSTANCE = new OfflineManagerCodec();
+
+    private OfflineManagerCodec(){}
+
+    @Override
+    protected Object readValueOfType(byte type, ByteBuffer buffer) {
+      switch (type) {
+        case (byte)128:
+          return CameraBounds.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)129:
+          return CameraBoundsOptions.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)130:
+          return CameraOptions.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)131:
+          return CameraState.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)132:
+          return CanonicalTileID.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)133:
+          return CoordinateBounds.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)134:
+          return CoordinateBoundsZoom.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)135:
+          return FeatureExtensionValue.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)136:
+          return GlyphsRasterizationOptions.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)137:
+          return ImageContent.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)138:
+          return ImageStretches.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)139:
+          return LayerPosition.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)140:
+          return MapAnimationOptions.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)141:
+          return MapDebugOptions.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)142:
+          return MapMemoryBudgetInMegabytes.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)143:
+          return MapMemoryBudgetInTiles.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)144:
+          return MapOptions.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)145:
+          return MbxEdgeInsets.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)146:
+          return MbxImage.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)147:
+          return MercatorCoordinate.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)148:
+          return OfflineRegionGeometryDefinition.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)149:
+          return OfflineRegionTilePyramidDefinition.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)150:
+          return ProjectedMeters.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)151:
+          return QueriedFeature.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)152:
+          return RenderedQueryGeometry.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)153:
+          return RenderedQueryOptions.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)154:
+          return ResourceOptions.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)155:
+          return ScreenBox.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)156:
+          return ScreenCoordinate.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)157:
+          return Size.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)158:
+          return SourceQueryOptions.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)159:
+          return StyleObjectInfo.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)160:
+          return StylePropertyValue.fromMap((Map<String, Object>) readValue(buffer));
+
+        case (byte)161:
+          return TransitionOptions.fromMap((Map<String, Object>) readValue(buffer));
+
+        default:
+          return super.readValueOfType(type, buffer);
+
+      }
+    }
+    @Override
+    protected void writeValue(ByteArrayOutputStream stream, Object value)     {
+      if (value instanceof CameraBounds) {
+        stream.write(128);
+        writeValue(stream, ((CameraBounds) value).toMap());
+      } else
+      if (value instanceof CameraBoundsOptions) {
+        stream.write(129);
+        writeValue(stream, ((CameraBoundsOptions) value).toMap());
+      } else
+      if (value instanceof CameraOptions) {
+        stream.write(130);
+        writeValue(stream, ((CameraOptions) value).toMap());
+      } else
+      if (value instanceof CameraState) {
+        stream.write(131);
+        writeValue(stream, ((CameraState) value).toMap());
+      } else
+      if (value instanceof CanonicalTileID) {
+        stream.write(132);
+        writeValue(stream, ((CanonicalTileID) value).toMap());
+      } else
+      if (value instanceof CoordinateBounds) {
+        stream.write(133);
+        writeValue(stream, ((CoordinateBounds) value).toMap());
+      } else
+      if (value instanceof CoordinateBoundsZoom) {
+        stream.write(134);
+        writeValue(stream, ((CoordinateBoundsZoom) value).toMap());
+      } else
+      if (value instanceof FeatureExtensionValue) {
+        stream.write(135);
+        writeValue(stream, ((FeatureExtensionValue) value).toMap());
+      } else
+      if (value instanceof GlyphsRasterizationOptions) {
+        stream.write(136);
+        writeValue(stream, ((GlyphsRasterizationOptions) value).toMap());
+      } else
+      if (value instanceof ImageContent) {
+        stream.write(137);
+        writeValue(stream, ((ImageContent) value).toMap());
+      } else
+      if (value instanceof ImageStretches) {
+        stream.write(138);
+        writeValue(stream, ((ImageStretches) value).toMap());
+      } else
+      if (value instanceof LayerPosition) {
+        stream.write(139);
+        writeValue(stream, ((LayerPosition) value).toMap());
+      } else
+      if (value instanceof MapAnimationOptions) {
+        stream.write(140);
+        writeValue(stream, ((MapAnimationOptions) value).toMap());
+      } else
+      if (value instanceof MapDebugOptions) {
+        stream.write(141);
+        writeValue(stream, ((MapDebugOptions) value).toMap());
+      } else
+      if (value instanceof MapMemoryBudgetInMegabytes) {
+        stream.write(142);
+        writeValue(stream, ((MapMemoryBudgetInMegabytes) value).toMap());
+      } else
+      if (value instanceof MapMemoryBudgetInTiles) {
+        stream.write(143);
+        writeValue(stream, ((MapMemoryBudgetInTiles) value).toMap());
+      } else
+      if (value instanceof MapOptions) {
+        stream.write(144);
+        writeValue(stream, ((MapOptions) value).toMap());
+      } else
+      if (value instanceof MbxEdgeInsets) {
+        stream.write(145);
+        writeValue(stream, ((MbxEdgeInsets) value).toMap());
+      } else
+      if (value instanceof MbxImage) {
+        stream.write(146);
+        writeValue(stream, ((MbxImage) value).toMap());
+      } else
+      if (value instanceof MercatorCoordinate) {
+        stream.write(147);
+        writeValue(stream, ((MercatorCoordinate) value).toMap());
+      } else
+      if (value instanceof OfflineRegionGeometryDefinition) {
+        stream.write(148);
+        writeValue(stream, ((OfflineRegionGeometryDefinition) value).toMap());
+      } else
+      if (value instanceof OfflineRegionTilePyramidDefinition) {
+        stream.write(149);
+        writeValue(stream, ((OfflineRegionTilePyramidDefinition) value).toMap());
+      } else
+      if (value instanceof ProjectedMeters) {
+        stream.write(150);
+        writeValue(stream, ((ProjectedMeters) value).toMap());
+      } else
+      if (value instanceof QueriedFeature) {
+        stream.write(151);
+        writeValue(stream, ((QueriedFeature) value).toMap());
+      } else
+      if (value instanceof RenderedQueryGeometry) {
+        stream.write(152);
+        writeValue(stream, ((RenderedQueryGeometry) value).toMap());
+      } else
+      if (value instanceof RenderedQueryOptions) {
+        stream.write(153);
+        writeValue(stream, ((RenderedQueryOptions) value).toMap());
+      } else
+      if (value instanceof ResourceOptions) {
+        stream.write(154);
+        writeValue(stream, ((ResourceOptions) value).toMap());
+      } else
+      if (value instanceof ScreenBox) {
+        stream.write(155);
+        writeValue(stream, ((ScreenBox) value).toMap());
+      } else
+      if (value instanceof ScreenCoordinate) {
+        stream.write(156);
+        writeValue(stream, ((ScreenCoordinate) value).toMap());
+      } else
+      if (value instanceof Size) {
+        stream.write(157);
+        writeValue(stream, ((Size) value).toMap());
+      } else
+      if (value instanceof SourceQueryOptions) {
+        stream.write(158);
+        writeValue(stream, ((SourceQueryOptions) value).toMap());
+      } else
+      if (value instanceof StyleObjectInfo) {
+        stream.write(159);
+        writeValue(stream, ((StyleObjectInfo) value).toMap());
+      } else
+      if (value instanceof StylePropertyValue) {
+        stream.write(160);
+        writeValue(stream, ((StylePropertyValue) value).toMap());
+      } else
+      if (value instanceof TransitionOptions) {
+        stream.write(161);
+        writeValue(stream, ((TransitionOptions) value).toMap());
+      } else
+      {
+        super.writeValue(stream, value);
+      }
+    }
+    public  interface OfflineManager{
+      void cacheMapLayer(Result<String> result);
+
+      static MessageCodec<Object> getCodec() {
+        return OfflineManagerCodec.INSTANCE;
+      }
+
+      static  void setup(BinaryMessenger binaryMessenger, OfflineManager api){
+        {
+          BasicMessageChannel<Object> channel =
+                  new BasicMessageChannel<>(binaryMessenger, "dev.flutter.pigeon.OfflineManager.cacheMapLayer", getCodec());
+          if (api != null) {
+            channel.setMessageHandler((message, reply) -> {
+              Map<String, Object> wrapped = new HashMap<>();
+              try {
+                Result<String> resultCallback = new Result<String>() {
+                  public void success(String result) {
+                    wrapped.put("result", result);
+                    reply.reply(wrapped);
+                  }
+                  public void error(Throwable error) {
+                    wrapped.put("error", wrapError(error));
+                    reply.reply(wrapped);
+                  }
+                };
+
+                api.cacheMapLayer(resultCallback);
+              }
+              catch (Error | RuntimeException exception) {
+                wrapped.put("error", wrapError(exception));
+                reply.reply(wrapped);
+              }
+            });
+          } else {
+            channel.setMessageHandler(null);
+          }
+        }
+      }
+    }
+
+  }
   private static class CancelableCodec extends StandardMessageCodec {
     public static final CancelableCodec INSTANCE = new CancelableCodec();
     private CancelableCodec() {}

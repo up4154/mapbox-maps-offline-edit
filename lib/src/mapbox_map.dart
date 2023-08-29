@@ -90,6 +90,7 @@ class MapboxMap extends ChangeNotifier {
       });
     }
     _setupGestures();
+
   }
 
   final _MapboxMapsPlatform _mapboxMapsPlatform;

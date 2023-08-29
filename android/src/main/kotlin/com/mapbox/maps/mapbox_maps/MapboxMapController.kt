@@ -30,6 +30,7 @@ class MapboxMapController(
   private val mapboxMap: MapboxMap = mapView.getMapboxMap()
   private val methodChannel: MethodChannel
   private val styleController: StyleController = StyleController(mapboxMap)
+  private val offlineController: OfflineController = OfflineController(mapView)
   private val cameraController: CameraController = CameraController(mapboxMap)
   private val projectionController: MapProjectionController = MapProjectionController(mapboxMap)
   private val mapInterfaceController: MapInterfaceController = MapInterfaceController(mapboxMap)
@@ -48,6 +49,7 @@ class MapboxMapController(
     changeUserAgent(pluginVersion)
     lifecycleProvider.getLifecycle()?.addObserver(this)
     FLTMapInterfaces.StyleManager.setup(proxyBinaryMessenger, styleController)
+    FLTMapInterfaces.OfflineManager.setup(proxyBinaryMessenger, offlineController)
     FLTMapInterfaces._CameraManager.setup(proxyBinaryMessenger, cameraController)
     FLTMapInterfaces.Projection.setup(proxyBinaryMessenger, projectionController)
     FLTMapInterfaces._MapInterface.setup(proxyBinaryMessenger, mapInterfaceController)
@@ -79,6 +81,7 @@ class MapboxMapController(
     mapView.onDestroy()
     methodChannel.setMethodCallHandler(null)
     FLTMapInterfaces.StyleManager.setup(proxyBinaryMessenger, null)
+    FLTMapInterfaces.OfflineManager.setup(proxyBinaryMessenger, null)
     FLTMapInterfaces._CameraManager.setup(proxyBinaryMessenger, null)
     FLTMapInterfaces.Projection.setup(proxyBinaryMessenger, null)
     FLTMapInterfaces._MapInterface.setup(proxyBinaryMessenger, null)
@@ -126,6 +129,10 @@ class MapboxMapController(
       }
       "gesture#remove_listeners" -> {
         gestureController.removeListeners()
+        result.success(null)
+      }
+      "map#offline_method" -> {
+        offlineController.cacheMapLayer()
         result.success(null)
       }
       else -> {
