@@ -31,7 +31,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.io.IOException
 import com.mapbox.bindgen.Value
-import
+
 class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineManager{
 
   private var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(mapView.context))
