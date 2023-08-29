@@ -28,6 +28,7 @@ import com.mapbox.maps.MapView
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.IOException
+import com.mapbox.bindgen.Value
 
 class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineManager{
 
