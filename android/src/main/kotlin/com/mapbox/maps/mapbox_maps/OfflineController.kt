@@ -50,29 +50,29 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
   }
   private lateinit var coordinateJson: JSONObject
   val tileRegionId = "Some Random String"
-  override  fun cacheMapLayer(){
-    val polygonJson = getPolygonJson(mapView.context,"coordinates.json" )
-    val tileRegionLoadOptions = TileRegionLoadOptions.Builder()
-      .geometry(Polygon.fromJson(polygonJson.toString()))
-      .descriptors(listOf( tilesetDescriptorForStyle))
-      .acceptExpired(true)
-      .networkRestriction(NetworkRestriction.NONE)
-      .build()
-    val tileRegionCancelable = tileStore.loadTileRegion(
-      tileRegionId,
-      tileRegionLoadOptions,
-      { progress ->
-        // Handle the download progress
-      }
-    ) { expected ->
-      if (expected.isValue) {
-        println("Downloaded SuccessFully")
-      }
-    }
-    expected.error?.let {
-      // Handle errors that occurred during the tile region download.
-    }
-  }
+//  override  fun cacheMapLayer(){
+//    val polygonJson = getPolygonJson(mapView.context,"coordinates.json" )
+//    val tileRegionLoadOptions = TileRegionLoadOptions.Builder()
+//      .geometry(Polygon.fromJson(polygonJson.toString()))
+//      .descriptors(listOf( tilesetDescriptorForStyle))
+//      .acceptExpired(true)
+//      .networkRestriction(NetworkRestriction.NONE)
+//      .build()
+//    val tileRegionCancelable = tileStore.loadTileRegion(
+//      tileRegionId,
+//      tileRegionLoadOptions,
+//      { progress ->
+//        // Handle the download progress
+//      }
+//    ) { expected ->
+//      if (expected.isValue) {
+//        println("Downloaded SuccessFully")
+//      }
+//    }
+//    expected.error?.let {
+//      // Handle errors that occurred during the tile region download.
+//    }
+//  }
 
 // Cancel the download if needed
   tileRegionCancelable.cancel()
