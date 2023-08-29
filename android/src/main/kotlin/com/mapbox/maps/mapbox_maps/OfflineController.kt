@@ -3,13 +3,11 @@ package com.mapbox.maps.mapbox_maps
 import android.app.Application
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import com.mapbox.bindgen.Value
 import com.mapbox.common.Logger
 import com.mapbox.maps.*
 import com.mapbox.maps.pigeons.FLTMapInterfaces
 import java.nio.ByteBuffer
 import java.util.Locale
-import com.mapbox.bindgen.Value
 import com.mapbox.common.NetworkRestriction
 import com.mapbox.common.TileDataDomain
 import com.mapbox.common.TileRegionLoadOptions
