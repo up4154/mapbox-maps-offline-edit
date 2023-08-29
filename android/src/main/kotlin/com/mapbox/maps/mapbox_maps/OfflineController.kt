@@ -68,16 +68,14 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
         println("Downloaded SuccessFully")
       }
     }
-    expected.error?.let {
-      // Handle errors that occurred during the tile region download.
-    }
+
   }
 
 
 
 
 
-  private  fun getPolygonJson(context: Context, fileName: String):JSONObject{
+  private  fun getPolygonJson(context: mapView.context, fileName: String):JSONObject{
     try {
       val inputStream = context.assets.open(fileName)
       val size = inputStream.available()
