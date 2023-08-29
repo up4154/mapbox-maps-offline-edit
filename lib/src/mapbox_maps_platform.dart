@@ -152,14 +152,14 @@ class _MapboxMapsPlatform {
       return new Future.error(e);
     }
   }
-  Future<void> offlineManagerInvoker(String event) async {
-    try {
-      await _channel
-          .invokeMethod('map#offline_method', <String, dynamic>{'event': event});
-    } on PlatformException catch (e) {
-      return new Future.error(e);
-    }
-  }
+  // Future<void> offlineManagerInvoker(String event) async {
+  //   try {
+  //     await _channel
+  //         .invokeMethod('map#offline_method', <String, dynamic>{'event': event});
+  //   } on PlatformException catch (e) {
+  //     return new Future.error(e);
+  //   }
+  // }
 
   Future<dynamic> createAnnotationManager(String type) async {
     try {

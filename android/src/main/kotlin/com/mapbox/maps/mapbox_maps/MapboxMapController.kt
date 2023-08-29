@@ -131,10 +131,10 @@ class MapboxMapController(
         gestureController.removeListeners()
         result.success(null)
       }
-      "map#offline_method" -> {
-        offlineController.cacheMapLayer()
-        result.success(null)
-      }
+//      "map#offline_method" -> {
+//        offlineController.cacheMapLayer()
+//        result.success(null)
+//      }
       else -> {
         result.notImplemented()
       }
