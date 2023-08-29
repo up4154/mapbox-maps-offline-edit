@@ -74,10 +74,9 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
     }
   }
 
-// Cancel the download if needed
-  tileRegionCancelable.cancel()
 
-  }
+
+
 
   private  fun getPolygonJson(context: Context, fileName: String):JSONObject{
     try {
