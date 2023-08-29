@@ -6822,9 +6822,7 @@ class _OfflineManagerCodec extends StandardMessageCodec {
   }
 }
 
-class _CancelableCodec extends StandardMessageCodec {
-  const _CancelableCodec();
-}
+
 class OfflineManager {
   /// Constructor for [StyleManager].  The [binaryMessenger] named argument is
   /// available for dependency injection.  If it is left null, the default
@@ -6867,6 +6865,9 @@ class OfflineManager {
 
 
 
+}
+class _CancelableCodec extends StandardMessageCodec {
+  const _CancelableCodec();
 }
 class Cancelable {
   /// Constructor for [Cancelable].  The [binaryMessenger] named argument is
