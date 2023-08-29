@@ -1,6 +1,8 @@
 package com.mapbox.maps.mapbox_maps
 
 import android.app.Application
+import android.content.Context
+
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import com.mapbox.common.Logger
@@ -29,7 +31,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.io.IOException
 import com.mapbox.bindgen.Value
-
+import
 class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineManager{
 
   private var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(mapView.context))
@@ -75,7 +77,7 @@ result.success(null)
 
 
 
-  private  fun getPolygonJson(context: mapView.context, fileName: String):JSONObject{
+  private  fun getPolygonJson(context: Context, fileName: String):JSONObject{
     try {
       val inputStream = context.assets.open(fileName)
       val size = inputStream.available()
