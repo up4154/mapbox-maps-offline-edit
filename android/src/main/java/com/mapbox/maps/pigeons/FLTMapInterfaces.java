@@ -8437,46 +8437,47 @@ public class FLTMapInterfaces {
         super.writeValue(stream, value);
       }
     }
-    public  interface OfflineManager{
-      void cacheMapLayer(Result<String> result);
 
-      static MessageCodec<Object> getCodec() {
-        return OfflineManagerCodec.INSTANCE;
-      }
 
-      static  void setup(BinaryMessenger binaryMessenger, OfflineManager api){
-        {
-          BasicMessageChannel<Object> channel =
-                  new BasicMessageChannel<>(binaryMessenger, "dev.flutter.pigeon.OfflineManager.cacheMapLayer", getCodec());
-          if (api != null) {
-            channel.setMessageHandler((message, reply) -> {
-              Map<String, Object> wrapped = new HashMap<>();
-              try {
-                Result<String> resultCallback = new Result<String>() {
-                  public void success(String result) {
-                    wrapped.put("result", result);
-                    reply.reply(wrapped);
-                  }
-                  public void error(Throwable error) {
-                    wrapped.put("error", wrapError(error));
-                    reply.reply(wrapped);
-                  }
-                };
+  }
+  public  interface OfflineManager{
+    void cacheMapLayer(Result<String> result);
 
-                api.cacheMapLayer(resultCallback);
-              }
-              catch (Error | RuntimeException exception) {
-                wrapped.put("error", wrapError(exception));
-                reply.reply(wrapped);
-              }
-            });
-          } else {
-            channel.setMessageHandler(null);
-          }
+    static MessageCodec<Object> getCodec() {
+      return OfflineManagerCodec.INSTANCE;
+    }
+
+    static  void setup(BinaryMessenger binaryMessenger, OfflineManager api){
+      {
+        BasicMessageChannel<Object> channel =
+                new BasicMessageChannel<>(binaryMessenger, "dev.flutter.pigeon.OfflineManager.cacheMapLayer", getCodec());
+        if (api != null) {
+          channel.setMessageHandler((message, reply) -> {
+            Map<String, Object> wrapped = new HashMap<>();
+            try {
+              Result<String> resultCallback = new Result<String>() {
+                public void success(String result) {
+                  wrapped.put("result", result);
+                  reply.reply(wrapped);
+                }
+                public void error(Throwable error) {
+                  wrapped.put("error", wrapError(error));
+                  reply.reply(wrapped);
+                }
+              };
+
+              api.cacheMapLayer(resultCallback);
+            }
+            catch (Error | RuntimeException exception) {
+              wrapped.put("error", wrapError(exception));
+              reply.reply(wrapped);
+            }
+          });
+        } else {
+          channel.setMessageHandler(null);
         }
       }
     }
-
   }
   private static class CancelableCodec extends StandardMessageCodec {
     public static final CancelableCodec INSTANCE = new CancelableCodec();
