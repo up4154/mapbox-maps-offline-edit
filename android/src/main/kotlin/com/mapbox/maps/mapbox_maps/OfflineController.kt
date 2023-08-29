@@ -68,7 +68,7 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
         println("Downloaded SuccessFully")
       }
     }
-result.succwaa(null)
+result.success(null)
   }
 
 
