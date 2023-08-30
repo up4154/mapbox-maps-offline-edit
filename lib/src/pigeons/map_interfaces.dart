@@ -6835,6 +6835,7 @@ class OfflineManager {
   static const MessageCodec<Object?> codec = _OfflineManagerCodec();
 
   Future<String> cacheMapLayer() async {
+    print("cache map layer is called in map_interface.dart");
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.OfflineManager.cacheMapLayer', codec,
         binaryMessenger: _binaryMessenger);

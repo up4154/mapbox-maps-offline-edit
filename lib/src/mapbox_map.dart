@@ -143,6 +143,7 @@ class MapboxMap extends ChangeNotifier {
   /// The currently loaded Style]object.
   late StyleManager style =
       StyleManager(binaryMessenger: _proxyBinaryMessenger);
+
   late OfflineManager offline =
   OfflineManager(binaryMessenger: _proxyBinaryMessenger);
 
