@@ -8613,6 +8613,7 @@ public class FLTMapInterfaces {
 
     /** Sets up an instance of `TilesetDescriptor` to handle messages through the `binaryMessenger`. */
     static void setup(BinaryMessenger binaryMessenger, TilesetDescriptor api) {
+
     }
   }
   private static Map<String, Object> wrapError(Throwable exception) {
