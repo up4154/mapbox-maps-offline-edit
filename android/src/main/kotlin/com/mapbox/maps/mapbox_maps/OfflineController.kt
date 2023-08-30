@@ -2,6 +2,7 @@ package com.mapbox.maps.mapbox_maps
 
 import android.app.Application
 import android.content.Context
+import android.util.Log
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -83,6 +84,17 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
     ) { expected ->
       if (expected.isValue) {
         println("Downloaded SuccessFully")
+      }
+    }
+    tileRegionCancelable.cancel()
+  val tileRegionExisting =  tileStore.getAllTileRegions { expected ->
+      if (expected.isValue) {
+        expected.value?.let { tileRegionList ->
+          Log.d("Existing tile regions: $tileRegionList")
+        }
+      }
+      expected.error?.let { tileRegionError ->
+        Log.e("TileRegionError: $tileRegionError")
       }
     }
 result.success(null)
