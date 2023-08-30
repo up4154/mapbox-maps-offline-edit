@@ -72,7 +72,10 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
         println("Downloaded SuccessFully")
       }
     }
-result.success(it.coordinateJson.toString)
+    mapView.getMap{
+      result.success(it.coordinateJson.toString)
+    }
+
   }
 
 
