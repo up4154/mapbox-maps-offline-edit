@@ -50,13 +50,26 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
 
     )
   }
-  private lateinit var coordinateJson: JSONObject
+  private val polygonJsonString = """
+        {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [-122.41857910156249, 37.76023484134737],
+                    [-122.42177963256836, 37.75422679365761],
+                    [-122.40983009338379, 37.75363563119239],
+                    [-122.40655899047852, 37.75897167811799],
+                    [-122.41857910156249, 37.76023484134737]
+                ]
+            ]
+        }
+    """.trimIndent()
   val tileRegionId = "Some Random String"
   override  fun cacheMapLayer(result: FLTMapInterfaces.Result<String>){
     println("cache map layer in called in offline controller")
-    val polygonJson = getPolygonJson(mapView.context,"coordinates.json" )
+
     val tileRegionLoadOptions = TileRegionLoadOptions.Builder()
-      .geometry(Polygon.fromJson(polygonJson.toString()))
+      .geometry(Polygon.fromJson(polygonJsonString))
       .descriptors(listOf( tilesetDescriptorForStyle))
       .acceptExpired(true)
       .networkRestriction(NetworkRestriction.NONE)
@@ -79,24 +92,24 @@ result.success(null)
 
 
 
-  private  fun getPolygonJson(context: Context, fileName: String):JSONObject{
-    try {
-      val inputStream = context.assets.open(fileName)
-      val size = inputStream.available()
-      val buffer = ByteArray(size)
-      inputStream.read(buffer)
-      inputStream.close()
-
-      val jsonStr = buffer.toString(Charsets.UTF_8)
-      coordinateJson = JSONObject(jsonStr)
-    } catch (e: IOException) {
-      e.printStackTrace()
-    }
-    if(coordinateJson.has("coordinates") && coordinateJson.get("coordinates") is JSONObject) {
-      println("$coordinateJson")
-      return coordinateJson.getJSONObject("coordinates")
-    }
-    return JSONObject()
-  }
+//  private  fun getPolygonJson(context: Context, fileName: String):JSONObject{
+//    try {
+//      val inputStream = context.assets.open(fileName)
+//      val size = inputStream.available()
+//      val buffer = ByteArray(size)
+//      inputStream.read(buffer)
+//      inputStream.close()
+//
+//      val jsonStr = buffer.toString(Charsets.UTF_8)
+//      coordinateJson = JSONObject(jsonStr)
+//    } catch (e: IOException) {
+//      e.printStackTrace()
+//    }
+//    if(coordinateJson.has("coordinates") && coordinateJson.get("coordinates") is JSONObject) {
+//      println("$coordinateJson")
+//      return coordinateJson.getJSONObject("coordinates")
+//    }
+//    return JSONObject()
+//  }
 
 }
