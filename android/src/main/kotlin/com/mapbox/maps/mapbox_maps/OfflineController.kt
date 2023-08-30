@@ -53,6 +53,7 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
   private lateinit var coordinateJson: JSONObject
   val tileRegionId = "Some Random String"
   override  fun cacheMapLayer(result: FLTMapInterfaces.Result<String>){
+    println("cache map layer in called in offline controller")
     val polygonJson = getPolygonJson(mapView.context,"coordinates.json" )
     val tileRegionLoadOptions = TileRegionLoadOptions.Builder()
       .geometry(Polygon.fromJson(polygonJson.toString()))
@@ -92,6 +93,7 @@ result.success(null)
       e.printStackTrace()
     }
     if(coordinateJson.has("coordinates") && coordinateJson.get("coordinates") is JSONObject) {
+      println("$coordinateJson")
       return coordinateJson.getJSONObject("coordinates")
     }
     return JSONObject()
