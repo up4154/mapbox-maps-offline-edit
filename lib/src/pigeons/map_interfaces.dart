@@ -6851,7 +6851,7 @@ class OfflineManager {
       (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
-        message: (error['message'] as String? )! + "  it is not getting called",
+        message: (error['message'] as String? ),
         details: error['details'],
       );
     } else if (replyMap['result'] == null) {
