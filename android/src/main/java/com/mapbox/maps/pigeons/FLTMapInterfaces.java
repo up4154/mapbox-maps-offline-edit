@@ -8470,6 +8470,7 @@ public class FLTMapInterfaces {
                 }
               };
               System.out.println(resultCallback);
+              System.out.println(api.cacheMapLayer(resultCallback));
               api.cacheMapLayer(resultCallback);
             }
             catch (Error | RuntimeException exception) {
