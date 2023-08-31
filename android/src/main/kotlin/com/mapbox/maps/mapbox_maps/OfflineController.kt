@@ -52,25 +52,31 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
     )
   }
   private val polygonJsonString = """
-        {
-            "type": "Polygon",
-            "coordinates": [
-                [
-                    [-122.41857910156249, 37.76023484134737],
-                    [-122.42177963256836, 37.75422679365761],
-                    [-122.40983009338379, 37.75363563119239],
-                    [-122.40655899047852, 37.75897167811799],
-                    [-122.41857910156249, 37.76023484134737]
-                ]
-            ]
-        }
+     {
+  "type": "Feature",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [-122.41857910156249, 37.76023484134737],
+        [-122.42177963256836, 37.75422679365761],
+        [-122.40983009338379, 37.75363563119239],
+        [-122.40655899047852, 37.75897167811799],
+        [-122.41857910156249, 37.76023484134737]
+      ]
+    ]
+  },
+  "properties": {},
+  "bbox": [-122.42177963256836, 37.75363563119239, -122.40655899047852, 37.76023484134737]
+}
+
     """.trimIndent()
   val tileRegionId = "Some Random String"
    override   fun cacheMapLayer(result: FLTMapInterfaces.Result<String>){
     println("cache map layer in called in offline controller")
 
     val tileRegionLoadOptions = TileRegionLoadOptions.Builder()
-      .geometry(Polygon.fromJson(polygonJsonString))
+      .geometry(FeatureCollection.fromJson(polygonJsonString))
       .descriptors(listOf( tilesetDescriptorForStyle))
       .acceptExpired(true)
       .networkRestriction(NetworkRestriction.NONE)
