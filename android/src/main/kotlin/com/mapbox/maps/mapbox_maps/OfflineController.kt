@@ -97,7 +97,7 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
         println("TileRegionError: $tileRegionError")
       }
     }
-result.success(tileRegionCancelable.toString())
+result.success(tileRegionLoadOptions.toString())
   }
 
 
