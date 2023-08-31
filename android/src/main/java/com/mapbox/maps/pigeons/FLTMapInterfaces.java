@@ -8456,7 +8456,7 @@ public class FLTMapInterfaces {
             Map<String, Object> wrapped = new HashMap<>();
             try {
               System.out.println("cache map layer try called inn java ");
-              System.out.println("$api");
+              System.out.println(api);
               Result<String> resultCallback = new Result<String>() {
                 public void success(String result) {
                   System.out.println("cache map layer called inn java success");
