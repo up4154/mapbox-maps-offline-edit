@@ -8460,6 +8460,7 @@ public class FLTMapInterfaces {
               Result<String> resultCallback = new Result<String>() {
                 public void success(String result) {
                   System.out.println("cache map layer called inn java success");
+                  System.out.println(result);
                   wrapped.put("result", result);
                   reply.reply(wrapped);
                 }
