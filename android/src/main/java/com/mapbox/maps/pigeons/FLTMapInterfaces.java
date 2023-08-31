@@ -8455,12 +8455,15 @@ public class FLTMapInterfaces {
           channel.setMessageHandler((message, reply) -> {
             Map<String, Object> wrapped = new HashMap<>();
             try {
+              System.out.println("cache map layer try called inn java ");
               Result<String> resultCallback = new Result<String>() {
                 public void success(String result) {
+                  System.out.println("cache map layer called inn java success");
                   wrapped.put("result", result);
                   reply.reply(wrapped);
                 }
                 public void error(Throwable error) {
+                  System.out.println("cache map layer called inn java error");
                   wrapped.put("error", wrapError(error));
                   reply.reply(wrapped);
                 }
@@ -8469,6 +8472,7 @@ public class FLTMapInterfaces {
               api.cacheMapLayer(resultCallback);
             }
             catch (Error | RuntimeException exception) {
+              System.out.println("cache map layer catch called inn java ");
               wrapped.put("error", wrapError(exception));
               reply.reply(wrapped);
             }
