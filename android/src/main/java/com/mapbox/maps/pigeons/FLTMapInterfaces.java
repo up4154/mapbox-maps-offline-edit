@@ -8469,7 +8469,7 @@ public class FLTMapInterfaces {
                   reply.reply(wrapped);
                 }
               };
-
+              System.out.println(resultCallback);
               api.cacheMapLayer(resultCallback);
             }
             catch (Error | RuntimeException exception) {
