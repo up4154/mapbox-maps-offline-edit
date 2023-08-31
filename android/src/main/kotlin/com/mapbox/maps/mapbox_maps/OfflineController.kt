@@ -55,14 +55,25 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
         {
             "type": "Polygon",
             "coordinates": [
-                [
-                    [-122.41857910156249, 37.76023484134737],
-                    [-122.42177963256836, 37.75422679365761],
-                    [-122.40983009338379, 37.75363563119239],
-                    [-122.40655899047852, 37.75897167811799],
-                    [-122.41857910156249, 37.76023484134737]
-                ]
-            ]
+    [
+      [
+       -280.1028124,
+          23.32208
+      ],
+      [
+          -285.6411816, 23.7250117
+      ],
+      [
+     -285.0697626, 20.0146454
+      ],
+      [
+  -279.5753486, 19.7253422
+      ],
+      [
+            -280.0149017, 23.3220800
+      ],
+    ]
+  ],
         }
     """.trimIndent()
   val tileRegionId = "Some Random String"
@@ -97,7 +108,7 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
         println("TileRegionError: $tileRegionError")
       }
     }
-result.success(tileRegionLoadOptions.toString())
+result.success(tileRegionList.toString())
   }
 
 
