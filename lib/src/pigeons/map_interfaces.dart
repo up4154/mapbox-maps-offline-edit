@@ -6841,6 +6841,7 @@ class OfflineManager {
         binaryMessenger: _binaryMessenger);
     final Map<Object?, Object?>? replyMap =
     await channel.send(null) as Map<Object?, Object?>?;
+    print("$replyMap reply map in mapinterface dart");
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
