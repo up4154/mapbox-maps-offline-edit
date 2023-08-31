@@ -17,7 +17,7 @@ import com.mapbox.common.TileRegionLoadOptions
 import com.mapbox.common.TileStore
 import com.mapbox.common.TileStoreOptions
 import com.mapbox.common.TilesetDescriptor
-import com.mapbox.geojson.Polygon
+import com.mapbox.geojson.FeatureCollection
 import com.mapbox.maps.GlyphsRasterizationMode
 import com.mapbox.maps.MapInitOptions
 import com.mapbox.maps.OfflineManager
