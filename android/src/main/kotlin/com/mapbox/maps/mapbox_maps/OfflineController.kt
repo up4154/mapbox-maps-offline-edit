@@ -77,7 +77,7 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
         }
     """.trimIndent()
   val tileRegionId = "Some Random String"
-  private val tileRegionList = Collection<String>()
+  val tileRegionListDef = Collection<String>()
    override   fun cacheMapLayer(result: FLTMapInterfaces.Result<String>){
     println("cache map layer in called in offline controller")
 
@@ -102,7 +102,7 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
   val tileRegionExisting =  tileStore.getAllTileRegions { expected ->
       if (expected.isValue) {
         expected.value?.let { tileRegionList ->
-          this.tileRegionList.addAll(tileRegionList)
+          tileRegionListDef.addAll(tileRegionList)
           println("Existing tile regions: $tileRegionList")
         }
       }
@@ -110,7 +110,7 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
         println("TileRegionError: $tileRegionError")
       }
     }
-result.success(tileRegionList.toString())
+result.success(tileRegionListDef.toString())
   }
 
 
