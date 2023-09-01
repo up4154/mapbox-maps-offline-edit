@@ -102,13 +102,14 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
       if (expected.isValue) {
         expected.value?.let { tileRegionList ->
           println("Existing tile regions: $tileRegionList")
+
         }
       }
       expected.error?.let { tileRegionError ->
         println("TileRegionError: $tileRegionError")
       }
     }
-result.success("tileRegionList.toString()")
+result.success(tileRegionList.toString())
   }
 
 
