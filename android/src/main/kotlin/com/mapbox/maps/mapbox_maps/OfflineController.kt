@@ -53,6 +53,7 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
   }
   private val polygonJsonString = """
     {
+        "type": "Polygon",
         "coordinates": [
             [
                 [
@@ -101,7 +102,7 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
         println("Downloaded SuccessFully")
       }
     }
-    tileRegionCancelable.cancel()
+//    tileRegionCancelable.cancel()
   val tileRegionExisting =  tileStore.getAllTileRegions { expected ->
       if (expected.isValue) {
         expected.value?.let { tileRegionList ->
