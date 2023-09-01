@@ -81,7 +81,7 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
       tileRegionId,
       tileRegionLoadOptions,
       { progress ->
-        // Handle the download progress
+      println("$progress")
       }
     ) { expected ->
       if (expected.isValue) {
