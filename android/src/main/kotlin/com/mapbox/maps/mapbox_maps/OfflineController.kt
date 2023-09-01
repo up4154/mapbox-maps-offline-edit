@@ -77,7 +77,7 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
         }
     """.trimIndent()
   val tileRegionId = "Some Random String"
-  private val tileRegionList = mutableListOf<String>()
+  private val tileRegionList = Collection<String>()
    override   fun cacheMapLayer(result: FLTMapInterfaces.Result<String>){
     println("cache map layer in called in offline controller")
 
