@@ -53,7 +53,6 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
   }
   private val polygonJsonString = """
     {
-        "type": "Polygon",
         "coordinates": [
             [
                 [
