@@ -101,6 +101,9 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
       if (expected.isValue) {
         println("Downloaded SuccessFully")
       }
+      else{
+        println("downloading not completed")
+      }
     }
 //    tileRegionCancelable.cancel()
   val tileRegionExisting =  tileStore.getAllTileRegions { expected ->
