@@ -52,30 +52,35 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
     )
   }
   private val polygonJsonString = """
-        {
-            "type": "Polygon",
-            "coordinates": [
-    [
-      [
-       -280.1028124,
-          23.32208
-      ],
-      [
-          -285.6411816, 23.7250117
-      ],
-      [
-     -285.0697626, 20.0146454
-      ],
-      [
-  -279.5753486, 19.7253422
-      ],
-      [
-            -280.0149017, 23.3220800
-      ],
-    ]
-  ],
-        }
-    """.trimIndent()
+    {
+        "type": "Polygon",
+        "coordinates": [
+            [
+                [
+                    -280.1028124,
+                    23.32208
+                ],
+                [
+                    -285.6411816,
+                    23.7250117
+                ],
+                [
+                    -285.0697626,
+                    20.0146454
+                ],
+                [
+                    -279.5753486,
+                    19.7253422
+                ],
+                [
+                    -280.0149017,
+                    23.3220800
+                ]
+            ]
+        ]
+    }
+""".trimIndent()
+
   val tileRegionId = "Some Random String"
    override   fun cacheMapLayer(result: FLTMapInterfaces.Result<String>){
     println("cache map layer in called in offline controller")
@@ -102,15 +107,14 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
       if (expected.isValue) {
         expected.value?.let { tileRegionList ->
           println("Existing tile regions: $tileRegionList")
-          result.success(tileRegionList.toString())
+
         }
       }
       expected.error?.let { tileRegionError ->
         println("TileRegionError: $tileRegionError")
-//        result.error(tileRegionError.toString())
       }
     }
-
+result.success(tileRegionList.toString())
   }
 
 
