@@ -107,7 +107,7 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
       }
       expected.error?.let { tileRegionError ->
         println("TileRegionError: $tileRegionError")
-        result.error(tileRegionError.toString())
+//        result.error(tileRegionError.toString())
       }
     }
 
