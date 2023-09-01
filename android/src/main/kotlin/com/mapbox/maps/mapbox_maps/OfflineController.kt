@@ -98,9 +98,11 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
       }
     }
     tileRegionCancelable.cancel()
+     val TileRegionListDef=[]
   val tileRegionExisting =  tileStore.getAllTileRegions { expected ->
       if (expected.isValue) {
         expected.value?.let { tileRegionList ->
+          TileRegionListDef=tileRegionList
           println("Existing tile regions: $tileRegionList")
         }
       }
@@ -108,8 +110,7 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
         println("TileRegionError: $tileRegionError")
       }
     }
-     println("$tileRegionExisting")
-result.success(tileRegionExisting)
+result.success(TileRegionListDef.toString())
   }
 
 
