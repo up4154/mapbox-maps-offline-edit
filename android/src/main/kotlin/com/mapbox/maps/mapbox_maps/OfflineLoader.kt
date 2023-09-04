@@ -4,9 +4,13 @@ import android.app.Application
 import android.content.Context
 import android.util.Log
 
+import io.flutter.plugin.common.MethodCall
+import io.flutter.plugin.common.MethodChannel
+
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import com.mapbox.common.Logger
+import com.mapbox.maps.MapView
 import com.mapbox.maps.*
 import com.mapbox.maps.pigeons.FLTMapInterfaces
 import java.nio.ByteBuffer
@@ -33,8 +37,8 @@ import org.json.JSONObject
 import java.io.IOException
 import com.mapbox.bindgen.Value
 
-class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineManager{
-
+class OfflineLoader(private val methodChannel: MethodChannel){
+  private val mapView: MapView
   private var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(mapView.context))
   private var tilesetDescriptorForStyle: TilesetDescriptor = offlineManager.createTilesetDescriptor(
     TilesetDescriptorOptions.Builder()
@@ -68,7 +72,7 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
 """.trimIndent()
 
   val tileRegionId = "Some Random String"
-   override   fun cacheMapLayer(result: FLTMapInterfaces.Result<String>){
+ fun cacheMapLayer(result: MethodChannel.Result){
     println("cache map layer in called in offline controller")
 
     val tileRegionLoadOptions = TileRegionLoadOptions.Builder()
@@ -81,7 +85,7 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
       tileRegionId,
       tileRegionLoadOptions,
       { progress ->
-      println("$progress")
+        println("$progress")
       }
     ) { expected ->
       if (expected.isValue) {
@@ -92,7 +96,7 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
       }
     }
 //    tileRegionCancelable.cancel()
-  val tileRegionExisting =  tileStore.getAllTileRegions { expected ->
+    val tileRegionExisting =  tileStore.getAllTileRegions { expected ->
       if (expected.isValue) {
         expected.value?.let { tileRegionList ->
           println("Existing tile regions: $tileRegionList")
@@ -103,31 +107,25 @@ class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineMa
         println("TileRegionError: $tileRegionError")
       }
     }
-result.success("tileRegionList.toString()")
+    result.success("tileRegionList.toString()")
   }
 
+  inner class MyMethodCallHandler : MethodChannel.MethodCallHandler {
+    override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
+      when (call.method) {
+        "cacheMapLayer" -> {
+          // Call your custom method here
+          cacheMapLayer(result)
+        }
+        else -> {
+          result.notImplemented()
+        }
+      }
+    }
+  }
 
-
-
-
-//  private  fun getPolygonJson(context: Context, fileName: String):JSONObject{
-//    try {
-//      val inputStream = context.assets.open(fileName)
-//      val size = inputStream.available()
-//      val buffer = ByteArray(size)
-//      inputStream.read(buffer)
-//      inputStream.close()
-//
-//      val jsonStr = buffer.toString(Charsets.UTF_8)
-//      coordinateJson = JSONObject(jsonStr)
-//    } catch (e: IOException) {
-//      e.printStackTrace()
-//    }
-//    if(coordinateJson.has("coordinates") && coordinateJson.get("coordinates") is JSONObject) {
-//      println("$coordinateJson")
-//      return coordinateJson.getJSONObject("coordinates")
-//    }
-//    return JSONObject()
-//  }
+  init {
+    methodChannel.setMethodCallHandler(MyMethodCallHandler())
+  }
 
 }
