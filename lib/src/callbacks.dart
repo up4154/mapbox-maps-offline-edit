@@ -52,7 +52,7 @@ class ArgumentCallbacks<T> {
 /// Definition for listener invoked when the map is created.
 typedef void MapCreatedCallback(MapboxMap controller);
 
-typedef void OfflineLoadedCallback(MapboxMap controller);
+// typedef void OfflineLoadedCallback(MapboxMap controller);
 /// Definition for listener invoked when the style is fully loaded.
 typedef void OnStyleLoadedListener(StyleLoadedEventData styleLoadedEventData);
 
