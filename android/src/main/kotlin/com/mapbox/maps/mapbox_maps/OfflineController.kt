@@ -33,7 +33,7 @@ import org.json.JSONObject
 import java.io.IOException
 import com.mapbox.bindgen.Value
 
-class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineManager{
+class OfflineController(private val mapView: MapView,private val methodChannel: MethodChannel):FLTMapInterfaces.OfflineManager{
 
   private var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(mapView.context))
   private var tilesetDescriptorForStyle: TilesetDescriptor = offlineManager.createTilesetDescriptor(
@@ -107,27 +107,25 @@ result.success("tileRegionList.toString()")
   }
 
 
+  class MethodCallHandler : MethodChannel.MethodCallHandler {
+    override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
+      when (call.method) {
+        "cacheMapLayer" -> {
+          // Call your custom method here
+          OfflineController().cacheMapLayer()
+        }
+        else -> {
+          result.notImplemented()
+        }
+      }
+    }
+  }
+
+  init {
+    methodChannel.setMethodCallHandler(MethodCallHandler())
+  }
 
 
 
-//  private  fun getPolygonJson(context: Context, fileName: String):JSONObject{
-//    try {
-//      val inputStream = context.assets.open(fileName)
-//      val size = inputStream.available()
-//      val buffer = ByteArray(size)
-//      inputStream.read(buffer)
-//      inputStream.close()
-//
-//      val jsonStr = buffer.toString(Charsets.UTF_8)
-//      coordinateJson = JSONObject(jsonStr)
-//    } catch (e: IOException) {
-//      e.printStackTrace()
-//    }
-//    if(coordinateJson.has("coordinates") && coordinateJson.get("coordinates") is JSONObject) {
-//      println("$coordinateJson")
-//      return coordinateJson.getJSONObject("coordinates")
-//    }
-//    return JSONObject()
-//  }
 
 }
