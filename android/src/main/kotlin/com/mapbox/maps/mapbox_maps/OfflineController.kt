@@ -3,7 +3,8 @@ package com.mapbox.maps.mapbox_maps
 import android.app.Application
 import android.content.Context
 import android.util.Log
-
+import io.flutter.plugin.common.MethodCall
+import io.flutter.plugin.common.MethodChannel
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import com.mapbox.common.Logger
