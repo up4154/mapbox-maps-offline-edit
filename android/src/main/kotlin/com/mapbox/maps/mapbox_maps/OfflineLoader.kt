@@ -88,7 +88,8 @@ class MainActivity : FlutterActivity() {
     MethodChannel(flutterEngine.dartExecutor.binaryMessenger, kotlinChannel).setMethodCallHandler { call, result ->
       when (call.method) {
         "cacheMapLayer" -> {
-          cacheMapLayer(result)
+          println("check done")
+//          cacheMapLayer(result)
         }
         else -> {
           result.notImplemented()
@@ -97,43 +98,43 @@ class MainActivity : FlutterActivity() {
     }
   }
 
-   fun cacheMapLayer(result: MethodChannel.Result){
-    println("cache map layer in called in offline controller")
-
-    val tileRegionLoadOptions = TileRegionLoadOptions.Builder()
-      .geometry(Polygon.fromJson(polygonJsonString))
-      .descriptors(listOf( tilesetDescriptorForStyle))
-      .acceptExpired(true)
-      .networkRestriction(NetworkRestriction.NONE)
-      .build()
-    val tileRegionCancelable = tileStore.loadTileRegion(
-      tileRegionId,
-      tileRegionLoadOptions,
-      { progress ->
-        println("$progress")
-      }
-    ) { expected ->
-      if (expected.isValue) {
-        println("Downloaded SuccessFully")
-      }
-      else{
-        println("downloading not completed")
-      }
-    }
-//    tileRegionCancelable.cancel()
-    val tileRegionExisting =  tileStore.getAllTileRegions { expected ->
-      if (expected.isValue) {
-        expected.value?.let { tileRegionList ->
-          println("Existing tile regions: $tileRegionList")
-
-        }
-      }
-      expected.error?.let { tileRegionError ->
-        println("TileRegionError: $tileRegionError")
-      }
-    }
-    result.success("tileRegionList.toString()")
-  }
+//   fun cacheMapLayer(result: MethodChannel.Result){
+//    println("cache map layer in called in offline controller")
+//
+//    val tileRegionLoadOptions = TileRegionLoadOptions.Builder()
+//      .geometry(Polygon.fromJson(polygonJsonString))
+//      .descriptors(listOf( tilesetDescriptorForStyle))
+//      .acceptExpired(true)
+//      .networkRestriction(NetworkRestriction.NONE)
+//      .build()
+//    val tileRegionCancelable = tileStore.loadTileRegion(
+//      tileRegionId,
+//      tileRegionLoadOptions,
+//      { progress ->
+//        println("$progress")
+//      }
+//    ) { expected ->
+//      if (expected.isValue) {
+//        println("Downloaded SuccessFully")
+//      }
+//      else{
+//        println("downloading not completed")
+//      }
+//    }
+////    tileRegionCancelable.cancel()
+//    val tileRegionExisting =  tileStore.getAllTileRegions { expected ->
+//      if (expected.isValue) {
+//        expected.value?.let { tileRegionList ->
+//          println("Existing tile regions: $tileRegionList")
+//
+//        }
+//      }
+//      expected.error?.let { tileRegionError ->
+//        println("TileRegionError: $tileRegionError")
+//      }
+//    }
+//    result.success("tileRegionList.toString()")
+//  }
 }
 
 //class OfflineLoader(private val mapView: MapView,private val methodChannel: MethodChannel){
