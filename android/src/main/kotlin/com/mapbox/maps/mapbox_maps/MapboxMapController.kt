@@ -81,7 +81,7 @@ class MapboxMapController(
     FLTMapInterfaces.StyleManager.setup(proxyBinaryMessenger, null)
     FLTMapInterfaces._CameraManager.setup(proxyBinaryMessenger, null)
     FLTMapInterfaces.Projection.setup(proxyBinaryMessenger, null)
-    FLTMapInterfaces._MapInterface.setup(proxyBinaryMessenger, null)
+    FLTMapInterfaces._MapInterface.setup(proxyBinaryMessenger, null)g
     FLTMapInterfaces._AnimationManager.setup(proxyBinaryMessenger, null)
     annotationController.dispose(proxyBinaryMessenger)
     FLTSettings.LocationComponentSettingsInterface.setup(proxyBinaryMessenger, null)
