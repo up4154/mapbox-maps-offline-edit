@@ -107,27 +107,4 @@ result.success("tileRegionList.toString()")
   }
 
 
-
-
-
-//  private  fun getPolygonJson(context: Context, fileName: String):JSONObject{
-//    try {
-//      val inputStream = context.assets.open(fileName)
-//      val size = inputStream.available()
-//      val buffer = ByteArray(size)
-//      inputStream.read(buffer)
-//      inputStream.close()
-//
-//      val jsonStr = buffer.toString(Charsets.UTF_8)
-//      coordinateJson = JSONObject(jsonStr)
-//    } catch (e: IOException) {
-//      e.printStackTrace()
-//    }
-//    if(coordinateJson.has("coordinates") && coordinateJson.get("coordinates") is JSONObject) {
-//      println("$coordinateJson")
-//      return coordinateJson.getJSONObject("coordinates")
-//    }
-//    return JSONObject()
-//  }
-
 }
