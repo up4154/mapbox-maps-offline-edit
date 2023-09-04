@@ -39,6 +39,7 @@ import com.mapbox.bindgen.Value
 
 
 class OfflineLoader(private val mapView: MapView,private val methodChannel: MethodChannel){
+  methodChannel="dev.flutter.pigeon.OfflineManager.cacheMapLayer"
   private var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(mapView.context))
   private var tilesetDescriptorForStyle: TilesetDescriptor = offlineManager.createTilesetDescriptor(
     TilesetDescriptorOptions.Builder()
@@ -114,7 +115,6 @@ class OfflineLoader(private val mapView: MapView,private val methodChannel: Meth
     override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
       when (call.method) {
         "cacheMapLayer" -> {
-          // Call your custom method here
           cacheMapLayer(result)
         }
         else -> {
