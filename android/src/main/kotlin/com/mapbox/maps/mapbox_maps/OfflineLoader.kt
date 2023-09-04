@@ -36,9 +36,9 @@ import org.json.JSONObject
 import java.io.IOException
 import com.mapbox.bindgen.Value
 
-var mapView: MapView? = null
 
-class OfflineLoader(private val methodChannel: MethodChannel){
+
+class OfflineLoader(private val mapView: MapView,private val methodChannel: MethodChannel){
   private var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(mapView.context))
   private var tilesetDescriptorForStyle: TilesetDescriptor = offlineManager.createTilesetDescriptor(
     TilesetDescriptorOptions.Builder()
