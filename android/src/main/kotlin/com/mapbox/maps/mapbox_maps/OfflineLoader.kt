@@ -38,8 +38,8 @@ import com.mapbox.bindgen.Value
 
 
 
-class OfflineLoader(private val mapView: MapView,private val methodChannel: MethodChannel){
-  methodChannel="dev.flutter.pigeon.OfflineManager.cacheMapLayer"
+class OfflineLoader(private val mapView: MapView){
+  private val methodChannel: MethodChannel ="dev.flutter.pigeon.OfflineManager.cacheMapLayer"
   private var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(mapView.context))
   private var tilesetDescriptorForStyle: TilesetDescriptor = offlineManager.createTilesetDescriptor(
     TilesetDescriptorOptions.Builder()
