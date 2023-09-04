@@ -39,7 +39,7 @@ import com.mapbox.bindgen.Value
 var mapView: MapView? = null
 
 class OfflineLoader(private val methodChannel: MethodChannel){
-  private var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(mapView.context))
+  private var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(mapView?.context))
   private var tilesetDescriptorForStyle: TilesetDescriptor = offlineManager.createTilesetDescriptor(
     TilesetDescriptorOptions.Builder()
       .styleURI(Style.OUTDOORS)
@@ -51,7 +51,7 @@ class OfflineLoader(private val methodChannel: MethodChannel){
     it.setOption(
       TileStoreOptions.MAPBOX_ACCESS_TOKEN,
       TileDataDomain.MAPS,
-      Value(mapView.context.getString(R.string.mapbox_access_token))
+      Value(mapView?.context.getString(R.string.mapbox_access_token))
 
     )
   }
