@@ -31,14 +31,14 @@ import com.mapbox.maps.TilesetDescriptorOptions
 import com.mapbox.maps.TilesetDescriptorOptionsForTilesets
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
-import com.mapbox.maps.MapView
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.IOException
 import com.mapbox.bindgen.Value
 
+var mapView: MapView? = null
+
 class OfflineLoader(private val methodChannel: MethodChannel){
-  private val mapView: MapView
   private var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(mapView.context))
   private var tilesetDescriptorForStyle: TilesetDescriptor = offlineManager.createTilesetDescriptor(
     TilesetDescriptorOptions.Builder()
