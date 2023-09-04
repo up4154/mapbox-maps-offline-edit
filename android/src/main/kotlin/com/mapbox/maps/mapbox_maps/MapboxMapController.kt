@@ -28,9 +28,9 @@ class MapboxMapController(
 
   private val mapView: MapView = MapView(context, mapInitOptions)
   private val mapboxMap: MapboxMap = mapView.getMapboxMap()
-  private val methodChannel: MethodChannel
+  private val methodChannel: MethodChannel=MethodChannel(proxyBinaryMessenger, "plugins.flutter.io")
   private val styleController: StyleController = StyleController(mapboxMap)
-  private val offlineController: OfflineController = OfflineController(mapView)
+  private val offlineController: OfflineController = OfflineController(mapView,methodChannel)
   private val cameraController: CameraController = CameraController(mapboxMap)
   private val projectionController: MapProjectionController = MapProjectionController(mapboxMap)
   private val mapInterfaceController: MapInterfaceController = MapInterfaceController(mapboxMap)
