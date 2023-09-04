@@ -6,7 +6,7 @@ part of mapbox_maps_flutter;
 Future<String> cacheMapLayer() async {
   print("cache map layer is called in map_interface.dart");
   final MethodChannel _globalChannel =
-  MethodChannel("dev.flutter.pigeon.OfflineManager._globalChannel");
+  MethodChannel("dev.flutter.pigeon.OfflineManager.cacheMapLayer");
   try {
     final String result =
     await _globalChannel.invokeMethod('cacheMapLayer');
