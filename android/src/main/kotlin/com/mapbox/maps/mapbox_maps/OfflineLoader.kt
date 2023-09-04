@@ -41,7 +41,7 @@ import io.flutter.embedding.engine.FlutterEngine
 import android.os.Bundle
 
 class MainActivity : FlutterActivity() {
-  private val kotlinChannel = "dev.flutter.pigeon.OfflineManager.cacheMapLayer"
+  private val kotlinChannel = "offline-cacheMapLayer"
   private lateinit var mapView: MapView
   private var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(mapView.context))
   private var tilesetDescriptorForStyle: TilesetDescriptor = offlineManager.createTilesetDescriptor(

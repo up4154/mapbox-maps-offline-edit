@@ -3,7 +3,7 @@ part of mapbox_maps_flutter;
 
 // late final BinaryMessenger? _binaryMessenger;
 MethodChannel _globalChannel =
-MethodChannel("dev.flutter.pigeon.OfflineManager.cacheMapLayer");
+MethodChannel("offline-cacheMapLayer");
 
 Future<String> cacheMapLayer() async {
   print("cache map layer is called in offlineLoader.dart");
