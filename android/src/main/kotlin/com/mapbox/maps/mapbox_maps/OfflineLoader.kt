@@ -97,7 +97,7 @@ class MainActivity : FlutterActivity() {
     }
   }
 
-  override fun cacheMapLayer(result: MethodChannel.Result){
+   fun cacheMapLayer(result: MethodChannel.Result){
     println("cache map layer in called in offline controller")
 
     val tileRegionLoadOptions = TileRegionLoadOptions.Builder()
