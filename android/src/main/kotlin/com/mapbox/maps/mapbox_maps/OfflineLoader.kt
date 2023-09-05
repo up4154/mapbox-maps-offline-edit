@@ -65,15 +65,15 @@ class OfflineLoader{
   {
 
     println("cache map layer in called in offline controller")
-    private var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(mapView.context))
-    private var tilesetDescriptorForStyle: TilesetDescriptor = offlineManager.createTilesetDescriptor(
+     var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(mapView.context))
+     var tilesetDescriptorForStyle: TilesetDescriptor = offlineManager.createTilesetDescriptor(
       TilesetDescriptorOptions.Builder()
         .styleURI(Style.OUTDOORS)
         .minZoom(0)
         .maxZoom(16)
         .build()
     )
-    private val tileStore = TileStore.create().also {
+     val tileStore = TileStore.create().also {
       it.setOption(
         TileStoreOptions.MAPBOX_ACCESS_TOKEN,
         TileDataDomain.MAPS,
@@ -81,7 +81,7 @@ class OfflineLoader{
 
       )
     }
-    private val polygonJsonString = """
+     val polygonJsonString = """
     {
         "type": "Polygon",
         "coordinates": [
