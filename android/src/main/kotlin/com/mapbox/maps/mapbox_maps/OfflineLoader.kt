@@ -123,14 +123,35 @@ class OfflineLoader{
       .acceptExpired(true)
       .networkRestriction(NetworkRestriction.NONE)
       .build()
+    val tileStyleLoadOptions = StylePackLoadOptions.Builder()
+      .glyphsRasterizationMode(GlyphsRasterizationMode.IDEOGRAPHS_RASTERIZED_LOCALLY)
+      .build()
     val tileRegionCancelable = tileStore.loadTileRegion(
       tileRegionId,
       tileRegionLoadOptions,
       { progress ->
-        println("$progress")
+        println("$progress tile pack load option")
       }
     ) { expected ->
       if (expected.isValue) {
+        val stylePackCancelable = offlineManager.loadStylePack(
+          Style.SATELLITE_STREETS,
+          // Build Style pack load options
+          tileStyleLoadOptions,
+          { progress ->
+            println("$progress   sytlpackloadptions")
+          },
+          {
+              expected ->
+            if (expected.isValue) {
+              expected.value?.let { stylePack ->
+               println("Existing style pack: $stylePack")
+              }
+            }
+            expected.error?.let {
+              println("style pack causing error")
+            }
+          }
         println("Downloaded SuccessFully")
       }
       else{
