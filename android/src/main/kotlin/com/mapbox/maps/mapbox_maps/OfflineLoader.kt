@@ -33,7 +33,6 @@ import org.json.JSONObject
 import java.io.IOException
 import com.mapbox.bindgen.Value
 
-import com.mapbox.maps.MapInitOptions
 import android.os.Bundle
 import androidx.annotation.NonNull
 import io.flutter.embedding.android.FlutterActivity
