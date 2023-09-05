@@ -42,6 +42,7 @@ import io.flutter.plugin.common.MethodChannel
 
 
 class OfflineLoader{
+
 //    val channel_name="offline_method_channel"
 //  override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) {
 //    super.configureFlutterEngine(flutterEngine)
@@ -57,6 +58,7 @@ class OfflineLoader{
 //      }
 //    }
 //  }
+  private val context:Context
   private val mapView: MapView = MapView(context)
   private var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(mapView.context))
   private var tilesetDescriptorForStyle: TilesetDescriptor = offlineManager.createTilesetDescriptor(
