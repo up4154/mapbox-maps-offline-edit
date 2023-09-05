@@ -57,7 +57,7 @@ class OfflineLoader: FlutterActivity(){
       }
     }
   }
-  private val mapView: MapView = MapView(context, MapInitOptions)
+  private val mapView: MapView = MapView(this)
   private var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(mapView.context))
   private var tilesetDescriptorForStyle: TilesetDescriptor = offlineManager.createTilesetDescriptor(
     TilesetDescriptorOptions.Builder()
