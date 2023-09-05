@@ -33,11 +33,8 @@ import org.json.JSONObject
 import java.io.IOException
 import com.mapbox.bindgen.Value
 
-import com.mapbox.maps.MapInitOptions
+class OfflineController(private val mapView: MapView):FLTMapInterfaces.OfflineManager{
 
-class OfflineController():FLTMapInterfaces.OfflineManager{
-
-  private val mapView: MapView = MapView(context, MapInitOptions)
   private var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(mapView.context))
   private var tilesetDescriptorForStyle: TilesetDescriptor = offlineManager.createTilesetDescriptor(
     TilesetDescriptorOptions.Builder()
