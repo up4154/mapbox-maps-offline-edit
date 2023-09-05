@@ -91,7 +91,7 @@ class OfflineLoader: FlutterActivity(){
 """.trimIndent()
 
   val tileRegionId = "Some Random String"
-  override   fun cacheMapLayer(){
+  fun cacheMapLayer(){
     println("cache map layer in called in offline controller")
 
     val tileRegionLoadOptions = TileRegionLoadOptions.Builder()
