@@ -50,7 +50,7 @@ class OfflineLoader: FlutterActivity(){
       channel_name
     ).setMethodCallHandler { call, result ->
       if (call.method == "cacheMapLayer") {
-//        cacheMapLayer()
+        cacheMapLayer()
         result.success("cache map layer called in  offline loader in kotlin")
       } else {
         result.notImplemented()
