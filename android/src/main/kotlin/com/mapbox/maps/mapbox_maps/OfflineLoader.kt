@@ -42,7 +42,7 @@ import io.flutter.plugin.common.MethodChannel
 
 
 class OfflineLoader: FlutterActivity(){
-  private  val channel_name="offline_method_channel"
+    val channel_name="offline_method_channel"
   override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) {
     super.configureFlutterEngine(flutterEngine)
     MethodChannel(
