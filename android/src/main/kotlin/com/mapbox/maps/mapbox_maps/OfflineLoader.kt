@@ -65,15 +65,15 @@ class OfflineLoader{
   {
 
     println("cache map layer in called in offline controller")
-     var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(context))
-     var tilesetDescriptorForStyle: TilesetDescriptor = offlineManager.createTilesetDescriptor(
+    var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(context))
+    var tilesetDescriptorForStyle: TilesetDescriptor = offlineManager.createTilesetDescriptor(
       TilesetDescriptorOptions.Builder()
         .styleURI(Style.SATELLITE_STREETS)
         .minZoom(0)
         .maxZoom(16)
         .build()
     )
-     val tileStore = TileStore.create().also {
+    val tileStore = TileStore.create().also {
       it.setOption(
         TileStoreOptions.MAPBOX_ACCESS_TOKEN,
         TileDataDomain.MAPS,
@@ -81,7 +81,7 @@ class OfflineLoader{
 
       )
     }
-     val polygonJsonString = """
+    val polygonJsonString = """
     {
         "type": "Polygon",
         "coordinates": [
@@ -141,18 +141,18 @@ class OfflineLoader{
           { progress ->
             println("$progress   sytlpackloadptions")
           },
-          {
-              expected ->
-            if (expected.isValue) {
-              expected.value?.let { stylePack ->
-               println("Existing style pack: $stylePack")
-              }
-            }
-            expected.error?.let {
-              println("style pack causing error")
+        ){
+            expected ->
+          if (expected.isValue) {
+            expected.value?.let { stylePack ->
+              println("Existing style pack: $stylePack")
             }
           }
-        println("Downloaded SuccessFully"))
+          expected.error?.let {
+            println("style pack causing error")
+          }
+        }
+        println("Downloaded SuccessFully")
       }
       else{
         println("downloading not completed")
@@ -170,6 +170,6 @@ class OfflineLoader{
         println("TileRegionError: $tileRegionError")
       }
     }
-return "cache map layer success"
+    return "cache map layer success"
   }
 }
