@@ -44,17 +44,20 @@ import io.flutter.plugin.common.MethodChannel
 
 class OfflineLoader: FlutterActivity(){
   private  val channel_name="offline_method_channel"
-  MethodChannel(flutterEngine.dartExecutor.binaryMessenger,channel_name).setMethodCallHandler{
-    call,result->
-    if(call.method="cacheMapLayer"){
-      cacheMapLayer()
-      result.success("cache map layer called in  offline loader in kotlin")
-    }
-    else{
-      result.notImplemented()
+  override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) {
+    super.configureFlutterEngine(flutterEngine)
+    MethodChannel(
+      flutterEngine.dartExecutor.binaryMessenger,
+      channel_name
+    ).setMethodCallHandler { call, result ->
+      if (call.method = "cacheMapLayer") {
+        cacheMapLayer()
+        result.success("cache map layer called in  offline loader in kotlin")
+      } else {
+        result.notImplemented()
+      }
     }
   }
-
   private val mapView: MapView = MapView(context, MapInitOptions)
   private var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(mapView.context))
   private var tilesetDescriptorForStyle: TilesetDescriptor = offlineManager.createTilesetDescriptor(
