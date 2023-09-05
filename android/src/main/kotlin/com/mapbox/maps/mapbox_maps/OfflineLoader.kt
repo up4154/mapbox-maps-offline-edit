@@ -58,25 +58,30 @@ class OfflineLoader{
 //      }
 //    }
 //  }
-  private val context:Context
-  private val mapView: MapView = MapView(context)
-  private var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(mapView.context))
-  private var tilesetDescriptorForStyle: TilesetDescriptor = offlineManager.createTilesetDescriptor(
-    TilesetDescriptorOptions.Builder()
-      .styleURI(Style.OUTDOORS)
-      .minZoom(0)
-      .maxZoom(16)
-      .build()
-  )
-  private val tileStore = TileStore.create().also {
-    it.setOption(
-      TileStoreOptions.MAPBOX_ACCESS_TOKEN,
-      TileDataDomain.MAPS,
-      Value(mapView.context.getString(R.string.mapbox_access_token))
+//  private val context:Context
+//  private val mapView: MapView = MapView(context)
 
+  fun cacheMapLayer(context:Context):String
+  {
+
+    println("cache map layer in called in offline controller")
+    private var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(mapView.context))
+    private var tilesetDescriptorForStyle: TilesetDescriptor = offlineManager.createTilesetDescriptor(
+      TilesetDescriptorOptions.Builder()
+        .styleURI(Style.OUTDOORS)
+        .minZoom(0)
+        .maxZoom(16)
+        .build()
     )
-  }
-  private val polygonJsonString = """
+    private val tileStore = TileStore.create().also {
+      it.setOption(
+        TileStoreOptions.MAPBOX_ACCESS_TOKEN,
+        TileDataDomain.MAPS,
+        Value(mapView.context.getString(R.string.mapbox_access_token))
+
+      )
+    }
+    private val polygonJsonString = """
     {
         "type": "Polygon",
         "coordinates": [
@@ -92,10 +97,7 @@ class OfflineLoader{
     }
 """.trimIndent()
 
-  val tileRegionId = "Some Random String"
-  fun cacheMapLayer(){
-    println("cache map layer in called in offline controller")
-
+    val tileRegionId = "Some Random String"
     val tileRegionLoadOptions = TileRegionLoadOptions.Builder()
       .geometry(Polygon.fromJson(polygonJsonString))
       .descriptors(listOf( tilesetDescriptorForStyle))
@@ -128,6 +130,6 @@ class OfflineLoader{
         println("TileRegionError: $tileRegionError")
       }
     }
-
+return "cache map layer success"
   }
 }
