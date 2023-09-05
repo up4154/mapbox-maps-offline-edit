@@ -141,7 +141,7 @@ class OfflineLoader{
           { progress ->
             println("$progress   sytlpackloadptions")
           },
-        ){
+        {
             expected ->
           if (expected.isValue) {
             expected.value?.let { stylePack ->
@@ -151,7 +151,7 @@ class OfflineLoader{
           expected.error?.let {
             println("style pack causing error")
           }
-        }
+        })
         println("Downloaded SuccessFully")
       }
       else{
