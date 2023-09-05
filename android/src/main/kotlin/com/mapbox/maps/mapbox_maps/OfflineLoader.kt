@@ -152,7 +152,7 @@ class OfflineLoader{
               println("style pack causing error")
             }
           }
-        println("Downloaded SuccessFully")
+        println("Downloaded SuccessFully"))
       }
       else{
         println("downloading not completed")
