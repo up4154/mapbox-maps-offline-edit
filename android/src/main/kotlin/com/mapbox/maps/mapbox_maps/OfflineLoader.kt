@@ -134,24 +134,26 @@ class OfflineLoader{
       }
     ) { expected ->
       if (expected.isValue) {
-        val stylePackCancelable = offlineManager.loadStylePack(
-          Style.SATELLITE_STREETS,
-          // Build Style pack load options
-          tileStyleLoadOptions,
-          { progress ->
-            println("$progress   sytlpackloadptions")
-          },
-        {
-            expected ->
-          if (expected.isValue) {
-            expected.value?.let { stylePack ->
-              println("Existing style pack: $stylePack")
+        if(expected.value?.completedResourceCount == expected.value?.requiredResourceCount) {
+          val stylePackCancelable = offlineManager.loadStylePack(
+            Style.SATELLITE_STREETS,
+            // Build Style pack load options
+            tileStyleLoadOptions,
+            { progress ->
+
+            },
+            { expected ->
+              if (expected.isValue) {
+                expected.value?.let { stylePack ->
+                  println("Existing style pack regions: $stylePack")
+                }
+              }
+              else{
+                println("style pack download problem")
+              }
             }
-          }
-          expected.error?.let {
-            println("style pack causing error")
-          }
-        })
+          )
+        }
         println("Downloaded SuccessFully")
       }
       else{
