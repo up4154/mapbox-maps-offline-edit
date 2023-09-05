@@ -57,7 +57,7 @@ class OfflineLoader{
 //      }
 //    }
 //  }
-  private val mapView: MapView = MapView(this)
+  private val mapView: MapView = MapView(context)
   private var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(mapView.context))
   private var tilesetDescriptorForStyle: TilesetDescriptor = offlineManager.createTilesetDescriptor(
     TilesetDescriptorOptions.Builder()
