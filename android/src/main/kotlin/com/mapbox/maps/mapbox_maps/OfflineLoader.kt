@@ -49,7 +49,7 @@ class OfflineLoader: FlutterActivity(){
       flutterEngine.dartExecutor.binaryMessenger,
       channel_name
     ).setMethodCallHandler { call, result ->
-      if (call.method = "cacheMapLayer") {
+      if (call.method == "cacheMapLayer") {
         cacheMapLayer()
         result.success("cache map layer called in  offline loader in kotlin")
       } else {
