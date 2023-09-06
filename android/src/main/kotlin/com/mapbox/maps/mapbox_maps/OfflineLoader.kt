@@ -67,7 +67,7 @@ class OfflineLoader{
     var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(context))
     var tilesetDescriptorForStyle: TilesetDescriptor = offlineManager.createTilesetDescriptor(
       TilesetDescriptorOptions.Builder()
-//        .styleURI(Style.MAPBOX_STREETS)
+        .styleURI(Style.MAPBOX_STREETS)
         .minZoom(0)
         .maxZoom(22)
         .build()
@@ -131,7 +131,7 @@ class OfflineLoader{
       if (expected.isValue) {
         if(expected.value?.completedResourceCount == expected.value?.requiredResourceCount) {
           val stylePackCancelable = offlineManager.loadStylePack(
-            Style.MAPBOX_STREETS,
+//            Style.MAPBOX_STREETS,
             // Build Style pack load options
             tileStyleLoadOptions,
             { progress ->
