@@ -121,7 +121,7 @@ class OfflineLoader{
             // Build Style pack load options
             tileStyleLoadOptions,
             { progress ->
-
+              println("$progress style pack load option")
             },
             { expected ->
               if (expected.isValue) {
