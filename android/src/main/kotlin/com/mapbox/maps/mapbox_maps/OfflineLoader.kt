@@ -119,6 +119,7 @@ class OfflineLoader{
       .networkRestriction(NetworkRestriction.NONE)
       .build()
     val tileStyleLoadOptions = StylePackLoadOptions.Builder()
+      .acceptExpired(true)
       .glyphsRasterizationMode(GlyphsRasterizationMode.IDEOGRAPHS_RASTERIZED_LOCALLY)
       .build()
     val tileRegionCancelable = tileStore.loadTileRegion(
@@ -134,7 +135,7 @@ class OfflineLoader{
 
             Style.MAPBOX_STREETS,
             // Build Style pack load options
-//            tileStyleLoadOptions,
+            tileStyleLoadOptions,
             { progress ->
               println("$progress style pack load option")
             },
