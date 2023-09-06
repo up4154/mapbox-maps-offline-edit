@@ -71,7 +71,7 @@ class OfflineLoader{
       TilesetDescriptorOptionsForTilesets.Builder()
         .tilesets(tileUrlList)
         .minZoom(0)
-        .maxZoom(16)
+        .maxZoom(22)
         .build()
     )
     var tilesetDescriptorForStyle: TilesetDescriptor = offlineManager.createTilesetDescriptor(
