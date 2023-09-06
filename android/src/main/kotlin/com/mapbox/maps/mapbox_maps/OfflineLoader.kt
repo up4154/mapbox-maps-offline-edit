@@ -134,7 +134,7 @@ class OfflineLoader{
 
             Style.MAPBOX_STREETS,
             // Build Style pack load options
-            tileStyleLoadOptions,
+//            tileStyleLoadOptions,
             { progress ->
               println("$progress style pack load option")
             },
