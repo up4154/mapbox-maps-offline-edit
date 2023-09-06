@@ -131,6 +131,7 @@ class OfflineLoader{
       if (expected.isValue) {
         if(expected.value?.completedResourceCount == expected.value?.requiredResourceCount) {
           val stylePackCancelable = offlineManager.loadStylePack(
+
             Style.MAPBOX_STREETS,
             // Build Style pack load options
             tileStyleLoadOptions,
