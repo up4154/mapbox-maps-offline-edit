@@ -130,7 +130,7 @@ class OfflineLoader{
       .networkRestriction(NetworkRestriction.NONE)
       .build()
     val tileStyleLoadOptions = StylePackLoadOptions.Builder()
-//      .acceptExpired(true)
+      .acceptExpired(true)
       .glyphsRasterizationMode(GlyphsRasterizationMode.IDEOGRAPHS_RASTERIZED_LOCALLY
 
       )
