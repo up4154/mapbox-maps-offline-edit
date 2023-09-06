@@ -80,6 +80,7 @@ class OfflineLoader{
 
       )
     }
+
      val polygonJsonString = """
       {
         "type": "Polygon",
