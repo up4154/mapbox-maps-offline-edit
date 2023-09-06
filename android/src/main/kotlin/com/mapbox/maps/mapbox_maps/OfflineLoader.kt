@@ -143,27 +143,27 @@ class OfflineLoader{
       }
     ) { expected ->
       if (expected.isValue) {
-//        if(expected.value?.completedResourceCount == expected.value?.requiredResourceCount) {
-//          val stylePackCancelable = offlineManager.loadStylePack(
-//
-//            Style.SATELLITE_STREETS,
-//            // Build Style pack load options
-//            tileStyleLoadOptions,
-//            { progress ->
-//              println("$progress style pack load option")
-//            },
-//            { expected ->
-//              if (expected.isValue) {
-//                expected.value?.let { stylePack ->
-//                  println("Existing style pack regions: $stylePack")
-//                }
-//              }
-//              else{
-//                println("style pack download problem")
-//              }
-//            }
-//          )
-//        }
+        if(expected.value?.completedResourceCount == expected.value?.requiredResourceCount) {
+          val stylePackCancelable = offlineManager.loadStylePack(
+
+            Style.MAPBOX_STREETS,
+            // Build Style pack load options
+            tileStyleLoadOptions,
+            { progress ->
+              println("$progress style pack load option")
+            },
+            { expected ->
+              if (expected.isValue) {
+                expected.value?.let { stylePack ->
+                  println("Existing style pack regions: $stylePack")
+                }
+              }
+              else{
+                println("style pack download problem")
+              }
+            }
+          )
+        }
         println("Downloaded SuccessFully")
       }
      expected.error?.let{
