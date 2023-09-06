@@ -148,17 +148,17 @@ class OfflineLoader{
                   println("Existing style pack regions: $stylePack")
                 }
               }
-//              else{
-//                println("style pack download problem")
-//              }
+              else{
+                println("style pack download problem")
+              }
             }
           )
         }
         println("Downloaded SuccessFully")
       }
-//      else{
-//        println("downloading not completed")
-//      }
+      else{
+        println("downloading not completed")
+      }
     }
 //    tileRegionCancelable.cancel()
     val tileRegionExisting =  tileStore.getAllTileRegions { expected ->
