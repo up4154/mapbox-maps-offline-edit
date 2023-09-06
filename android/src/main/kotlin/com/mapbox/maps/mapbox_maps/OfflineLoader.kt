@@ -64,10 +64,13 @@ class OfflineLoader{
   fun cacheMapLayer(context:Context):String
   {
     println("cache map layer in called in offline controller")
+    val tilesetUrls: List<String>=[
+    "mapbox://mapbox.mapbox-traffic-v1"
+    ]
     var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(context))
-    private var tilesetDescriptorLines: TilesetDescriptor = offlineManager.createTilesetDescriptor(
+    var tilesetDescriptorLines: TilesetDescriptor = offlineManager.createTilesetDescriptor(
       TilesetDescriptorOptionsForTilesets.Builder()
-        .tilesets("mapbox://mapbox.mapbox-traffic-v1")
+        .tilesets(tilesetUrls)
         .minZoom(0)
         .maxZoom(16)
         .build()
