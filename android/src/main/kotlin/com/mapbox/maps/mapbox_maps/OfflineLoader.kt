@@ -63,7 +63,6 @@ class OfflineLoader{
 
   fun cacheMapLayer(context:Context):String
   {
-
     println("cache map layer in called in offline controller")
     var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(context))
     var tilesetDescriptorForStyle: TilesetDescriptor = offlineManager.createTilesetDescriptor(
