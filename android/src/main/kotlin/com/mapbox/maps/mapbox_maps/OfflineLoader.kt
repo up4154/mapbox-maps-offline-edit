@@ -67,7 +67,7 @@ class OfflineLoader{
     var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(context))
     var tilesetDescriptorForStyle: TilesetDescriptor = offlineManager.createTilesetDescriptor(
       TilesetDescriptorOptions.Builder()
-        .styleURI(Style.MAPBOX_STREETS)
+//        .styleURI(Style.MAPBOX_STREETS)
         .minZoom(0)
         .maxZoom(22)
         .build()
