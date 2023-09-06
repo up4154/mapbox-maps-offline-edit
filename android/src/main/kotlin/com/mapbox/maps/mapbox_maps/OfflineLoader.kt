@@ -81,7 +81,7 @@ class OfflineLoader{
 
       )
     }
-    private val polygonJsonString = """
+     val polygonJsonString = """
     {
         "type": "Polygon",
         "coordinates": [
