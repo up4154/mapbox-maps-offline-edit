@@ -152,6 +152,7 @@ class OfflineLoader{
             { progress ->
               println("$progress style pack load option")
             },
+
             { expected ->
               if (expected.isValue) {
                 expected.value?.let { stylePack ->
