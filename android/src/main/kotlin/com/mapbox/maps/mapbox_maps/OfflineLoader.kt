@@ -84,7 +84,7 @@ class OfflineLoader{
      val polygonJsonString = """
       {
         "type": "Polygon",
-        "coordinates": [
+         "coordinates": [
           [
             [
               74.9572080495771,
@@ -152,9 +152,9 @@ class OfflineLoader{
         }
         println("Downloaded SuccessFully")
       }
-      else{
-        println("downloading not completed")
-      }
+     expected.error?.let{
+       println("$it.message")
+     }
     }
 //    tileRegionCancelable.cancel()
     val tileRegionExisting =  tileStore.getAllTileRegions { expected ->
