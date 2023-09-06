@@ -107,7 +107,7 @@ class OfflineLoader{
               26.43151024539371
             ]
           ]
-        ],
+        ]
         
     }
 """.trimIndent()
