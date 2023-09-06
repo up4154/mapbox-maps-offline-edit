@@ -65,6 +65,13 @@ class OfflineLoader{
   {
     println("cache map layer in called in offline controller")
     var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(context))
+    private var tilesetDescriptorLines: TilesetDescriptor = offlineManager.createTilesetDescriptor(
+      TilesetDescriptorOptionsForTilesets.Builder()
+        .tilesets("mapbox://mapbox.mapbox-traffic-v1")
+        .minZoom(0)
+        .maxZoom(16)
+        .build()
+    )
     var tilesetDescriptorForStyle: TilesetDescriptor = offlineManager.createTilesetDescriptor(
       TilesetDescriptorOptions.Builder()
         .styleURI(Style.MAPBOX_STREETS)
@@ -115,7 +122,7 @@ class OfflineLoader{
     val tileRegionId = "Some Random String"
     val tileRegionLoadOptions = TileRegionLoadOptions.Builder()
       .geometry(Polygon.fromJson(polygonJsonString))
-      .descriptors(listOf( tilesetDescriptorForStyle))
+      .descriptors(listOf( tilesetDescriptorLines,tilesetDescriptorForStyle))
       .acceptExpired(true)
       .networkRestriction(NetworkRestriction.NONE)
       .build()
