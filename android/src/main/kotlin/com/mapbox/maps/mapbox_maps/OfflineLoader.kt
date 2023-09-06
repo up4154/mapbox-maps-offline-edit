@@ -70,7 +70,7 @@ class OfflineLoader{
       TilesetDescriptorOptions.Builder()
         .styleURI(Style.MAPBOX_STREETS)
         .minZoom(0)
-        .maxZoom(16)
+        .maxZoom(22)
         .build()
     )
     val tileStore = TileStore.create().also {
