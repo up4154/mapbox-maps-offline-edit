@@ -77,7 +77,7 @@ class OfflineLoader{
     )
     var tilesetDescriptorForStyle: TilesetDescriptor = offlineManager.createTilesetDescriptor(
       TilesetDescriptorOptions.Builder()
-        .styleURI(Style.SATELLITE)
+        .styleURI(Style.SATELLITE_STREETS)
         .minZoom(0)
         .maxZoom(22)
         .build()
@@ -146,7 +146,7 @@ class OfflineLoader{
         if(expected.value?.completedResourceCount == expected.value?.requiredResourceCount) {
           val stylePackCancelable = offlineManager.loadStylePack(
 
-            Style.SATELLITE,
+            Style.SATELLITE_STREETS,
             // Build Style pack load options
             tileStyleLoadOptions,
             { progress ->
