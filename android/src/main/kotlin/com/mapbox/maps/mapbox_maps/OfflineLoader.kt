@@ -67,21 +67,19 @@ class OfflineLoader{
     val tileUrlList = arrayListOf<String>()
 //    tileUrlList.add("mapbox://mapbox.mapbox-traffic-v1")
     tileUrlList.add("mapbox://mapbox.mapbox-terrain-v2")
-    var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(context))
-    var tilesetDescriptorLines: TilesetDescriptor = offlineManager.createTilesetDescriptor(
-      TilesetDescriptorOptionsForTilesets.Builder()
-        .tilesets(tileUrlList)
-        .minZoom(0)
-        .maxZoom(22)
-        .build()
-    )
-    var tilesetDescriptorForStyle: TilesetDescriptor = offlineManager.createTilesetDescriptor(
-      TilesetDescriptorOptions.Builder()
-        .styleURI(Style.SATELLITE_STREETS)
-        .minZoom(0)
-        .maxZoom(22)
-        .build()
-    )
+
+   var options:TilesetDescriptor = TilesetDescriptorOptionsForTilesets.Builder()
+     .tilesets(tileUrlList)
+     .minZoom(0)
+     .maxZoom(22)
+     .build()
+
+    var streetOptions :TilesetDescriptor = TilesetDescriptorOptions.Builder()
+      .styleURI(Style.SATELLITE_STREETS)
+      .minZoom(0)
+      .maxZoom(22)
+      .build()
+
     val tileStore = TileStore.create().also {
       it.setOption(
         TileStoreOptions.MAPBOX_ACCESS_TOKEN,
@@ -90,6 +88,20 @@ class OfflineLoader{
 
       )
     }
+
+    var offlineManager: OfflineManager = OfflineManager(MapInitOptions(
+      resourceOptions: ResourceOptions(
+        accessToken: Value(context.getString(R.string.mapbox_access_token)),
+        tileStore: tileStore
+      ),
+
+    ))
+    var tilesetDescriptorLines: TilesetDescriptor = offlineManager.createTilesetDescriptor(
+      options
+    )
+    var tilesetDescriptorForStyle: TilesetDescriptor = offlineManager.createTilesetDescriptor(
+      streetOptions
+    )
 
      val polygonJsonString = """
       {
