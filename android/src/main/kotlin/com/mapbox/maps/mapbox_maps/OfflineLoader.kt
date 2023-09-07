@@ -77,7 +77,7 @@ class OfflineLoader{
     )
     var tilesetDescriptorForStyle: TilesetDescriptor = offlineManager.createTilesetDescriptor(
       TilesetDescriptorOptions.Builder()
-        .styleURI(Style.SATELLITE_STREETS)
+        .styleURI(Style.MAPBOX_STREETS)
         .minZoom(0)
         .maxZoom(22)
         .build()
@@ -131,7 +131,7 @@ class OfflineLoader{
       .build()
     val tileStyleLoadOptions = StylePackLoadOptions.Builder()
       .acceptExpired(true)
-      .glyphsRasterizationMode(GlyphsRasterizationMode.NO_GLYPHS_RASTERIZED_LOCALLY
+      .glyphsRasterizationMode(GlyphsRasterizationMode.IDEOGRAPHS_RASTERIZED_LOCALLY
 
       )
       .build()
