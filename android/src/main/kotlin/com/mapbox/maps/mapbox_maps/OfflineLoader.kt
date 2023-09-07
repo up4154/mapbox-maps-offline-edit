@@ -70,7 +70,7 @@ class OfflineLoader{
       val list = arrayListOf<String>()
 
       list.add("mapbox://mapbox.mapbox-traffic-v1")
-      list.add("mapbox://mapbox.mapbox-terrain-v2")
+//      list.add("mapbox://mapbox.mapbox-terrain-v2")
 
 
       return list
