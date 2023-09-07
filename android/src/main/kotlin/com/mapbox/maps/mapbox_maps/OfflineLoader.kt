@@ -65,7 +65,16 @@ class OfflineLoader{
   {
 
     println("cache map layer in called in offline controller")
+     fun getTileSetIds() : List<String> {
 
+      val list = arrayListOf<String>()
+
+      list.add("mapbox://mapbox.mapbox-traffic-v1")
+      list.add("mapbox://mapbox.mapbox-terrain-v2")
+
+
+      return list
+    }
     var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(context))
     var tilesetDescriptorLines: TilesetDescriptor = offlineManager.createTilesetDescriptor(
       TilesetDescriptorOptionsForTilesets.Builder()
@@ -89,16 +98,7 @@ class OfflineLoader{
 
       )
     }
-     fun getTileSetIds() : List<String> {
 
-      val list = arrayListOf<String>()
-
-       list.add("mapbox://mapbox.mapbox-traffic-v1")
-       list.add("mapbox://mapbox.mapbox-terrain-v2")
-
-
-      return list
-    }
      val polygonJsonString = """
       {
         "type": "Polygon",
