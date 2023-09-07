@@ -91,14 +91,7 @@ class OfflineLoader{
 
       )
     }
-     fun getTileSetIds() : List<String> {
-      val list = arrayListOf<String>()
 
-       list.add("mapbox://${spanJson.getString("tileSetId")}")
-
-
-      return list
-    }
      val polygonJsonString = """
       {
         "type": "Polygon",
