@@ -88,13 +88,13 @@ class OfflineLoader{
 
       )
     }
-
-    var offlineManager: OfflineManager = OfflineManager(MapInitOptions(
+    var mapInitOptions:MapInitOptions= MapInitOptions(
       resourceOptions: ResourceOptions(
         accessToken: Value(context.getString(R.string.mapbox_access_token)),
         tileStore: tileStore
-      ),
-
+    ),
+    var offlineManager: OfflineManager = OfflineManager(
+      resourceOptions: mapInitOptions.resourceOptions
     ))
     var tilesetDescriptorLines: TilesetDescriptor = offlineManager.createTilesetDescriptor(
       options
