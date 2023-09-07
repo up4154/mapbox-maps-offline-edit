@@ -117,7 +117,7 @@ class MapboxMapFactory(
     val channelSuffix = params["channelSuffix"] as Int
 
     val textureView = params["textureView"] as? Boolean ?: false
-    val styleUri = params["styleUri"] as? String ?: Style.SATELLITE_STREETS
+    val styleUri = params["styleUri"] as? String ?: Style.TRAFFIC_DAY
     val pluginVersion = params["mapboxPluginVersion"] as String
     val mapInitOptions = MapInitOptions(
       context = context,
