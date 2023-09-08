@@ -76,9 +76,16 @@ class OfflineLoader{
         .maxZoom(22)
         .build()
     )
-    var tilesetDescriptorForStyle: TilesetDescriptor = offlineManager.createTilesetDescriptor(
+    var tilesetDescriptorForSatellite: TilesetDescriptor = offlineManager.createTilesetDescriptor(
       TilesetDescriptorOptions.Builder()
-        .styleURI(Style.SATELLITE_STREETS)
+        .styleURI(Style.SATELLITE)
+        .minZoom(0)
+        .maxZoom(22)
+        .build()
+    )
+    var tilesetDescriptorForStreets: TilesetDescriptor = offlineManager.createTilesetDescriptor(
+      TilesetDescriptorOptions.Builder()
+        .styleURI(Style.MAPBOX_STREETS)
         .minZoom(0)
         .maxZoom(22)
         .build()
@@ -125,15 +132,21 @@ class OfflineLoader{
     val tileRegionId = "Some Random String"
     val tileRegionLoadOptions = TileRegionLoadOptions.Builder()
       .geometry(Polygon.fromJson(polygonJsonString))
-      .descriptors(listOf( tilesetDescriptorLines,tilesetDescriptorForStyle))
+      .descriptors(listOf( tilesetDescriptorLines))
       .acceptExpired(true)
       .networkRestriction(NetworkRestriction.NONE)
       .build()
-    val tileStyleLoadOptions = StylePackLoadOptions.Builder()
+    val tileStyleLoadOptionsSatellite = StylePackLoadOptions.Builder()
+      .geometry(Polygon.fromJson(polygonJsonString))
+      .descriptor(listOf( tilesetDescriptorForSatellite))
       .acceptExpired(true)
-      .glyphsRasterizationMode(GlyphsRasterizationMode.IDEOGRAPHS_RASTERIZED_LOCALLY
-
-      )
+      .glyphsRasterizationMode(GlyphsRasterizationMode.IDEOGRAPHS_RASTERIZED_LOCALLY)
+      .build()
+    val tileStyleLoadOptionsStreets = StylePackLoadOptions.Builder()
+      .geometry(Polygon.fromJson(polygonJsonString))
+      .descriptor(listOf(tilesetDescriptorForStreets))
+      .acceptExpired(true)
+      .glyphsRasterizationMode(GlyphsRasterizationMode.IDEOGRAPHS_RASTERIZED_LOCALLY)
       .build()
     val tileRegionCancelable = tileStore.loadTileRegion(
       tileRegionId,
@@ -144,19 +157,39 @@ class OfflineLoader{
     ) { expected ->
       if (expected.isValue) {
         if(expected.value?.completedResourceCount == expected.value?.requiredResourceCount) {
-          val stylePackCancelable = offlineManager.loadStylePack(
+          val stylePackCancelableSatellite = offlineManager.loadStylePack(
 
-            Style.SATELLITE_STREETS,
+            Style.SATELLITE,
             // Build Style pack load options
-            tileStyleLoadOptions,
+            tileStyleLoadOptionsSatellite,
             { progress ->
-              println("$progress style pack load option")
+              println("$progress style pack load option FOR  SATELLITE")
             },
 
             { expected ->
               if (expected.isValue) {
                 expected.value?.let { stylePack ->
-                  println("Existing style pack regions: $stylePack")
+                  println("Existing style pack regions FOR  SATELLITE: $stylePack")
+                }
+              }
+              else{
+                println("style pack download problem")
+              }
+            }
+          )
+          val stylePackCancelableStreets = offlineManager.loadStylePack(
+
+            Style.SATELLITE_STREETS,
+            // Build Style pack load options
+            tileStyleLoadOptionsStreets,
+            { progress ->
+              println("$progress style pack load option FOR STREETS")
+            },
+
+            { expected ->
+              if (expected.isValue) {
+                expected.value?.let { stylePack ->
+                  println("Existing style pack regions FOR STREETS: $stylePack")
                 }
               }
               else{
