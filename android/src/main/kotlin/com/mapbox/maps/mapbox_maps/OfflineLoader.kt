@@ -136,21 +136,10 @@ class OfflineLoader{
       .acceptExpired(true)
       .networkRestriction(NetworkRestriction.NONE)
       .build()
-//    val tileStyleLoadOptionsSatellite = TileRegionLoadOptions.Builder()
-//      .geometry(Polygon.fromJson(polygonJsonString))
-//      .descriptors(listOf(tilesetDescriptorForSatellite))
-//      .acceptExpired(true)
-//      .networkRestriction(NetworkRestriction.NONE)
-//      .build()
-//    val tileStyleLoadOptionsStreets = TileRegionLoadOptions.Builder()
-//      .geometry(Polygon.fromJson(polygonJsonString))
-//      .descriptors(listOf(tilesetDescriptorForStreets))
-//      .acceptExpired(true)
-//      .networkRestriction(NetworkRestriction.NONE)
-//      .build()
     val tileStyleLoadOptions = StylePackLoadOptions.Builder()
       .acceptExpired(true)
       .glyphsRasterizationMode(GlyphsRasterizationMode.IDEOGRAPHS_RASTERIZED_LOCALLY
+
       )
       .build()
     val tileRegionCancelable = tileStore.loadTileRegion(
@@ -164,11 +153,11 @@ class OfflineLoader{
         if(expected.value?.completedResourceCount == expected.value?.requiredResourceCount) {
           val stylePackCancelableSatellite = offlineManager.loadStylePack(
 
-            Style.MAPBOX_STREETS,
+            Style.SATELLITE,
             // Build Style pack load options
             tileStyleLoadOptions,
             { progress ->
-              println("$progress style pack load option")
+              println("$progress style pack load option FOR  SATELLITE")
             },
 
             { expected ->
@@ -184,7 +173,7 @@ class OfflineLoader{
           )
           val stylePackCancelableStreets = offlineManager.loadStylePack(
 
-            Style.SATELLITE,
+            Style.SATELLITE_STREETS,
             // Build Style pack load options
             tileStyleLoadOptions,
             { progress ->
@@ -202,17 +191,14 @@ class OfflineLoader{
               }
             }
           )
-          }
+
+        }
         println("Downloaded SuccessFully")
       }
      expected.error?.let{
        println("$it.message")
      }
     }
-
-
-
-
 //    tileRegionCancelable.cancel()
     val tileRegionExisting =  tileStore.getAllTileRegions { expected ->
       if (expected.isValue) {
