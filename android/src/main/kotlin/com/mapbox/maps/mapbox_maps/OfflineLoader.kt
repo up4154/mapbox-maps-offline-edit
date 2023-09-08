@@ -208,7 +208,7 @@ class OfflineLoader{
      expected.error?.let{
        println("$it.message")
      }
-    }}
+    }
 
 
 
