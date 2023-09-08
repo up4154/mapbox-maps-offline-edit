@@ -148,7 +148,11 @@ class OfflineLoader{
 //      .acceptExpired(true)
 //      .networkRestriction(NetworkRestriction.NONE)
 //      .build()
-
+    val tileStyleLoadOptions = StylePackLoadOptions.Builder()
+      .acceptExpired(true)
+      .glyphsRasterizationMode(GlyphsRasterizationMode.IDEOGRAPHS_RASTERIZED_LOCALLY
+      )
+      .build()
     val tileRegionCancelable = tileStore.loadTileRegion(
       tileRegionId,
       tileRegionLoadOptions,
