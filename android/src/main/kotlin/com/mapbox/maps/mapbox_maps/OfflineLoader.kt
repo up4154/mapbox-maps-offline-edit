@@ -132,22 +132,22 @@ class OfflineLoader{
     val tileRegionId = "Some Random String"
     val tileRegionLoadOptions = TileRegionLoadOptions.Builder()
       .geometry(Polygon.fromJson(polygonJsonString))
-      .descriptors(listOf( tilesetDescriptorLines))
+      .descriptors(listOf( tilesetDescriptorLines,tilesetDescriptorForSatellite,tilesetDescriptorForStreets))
       .acceptExpired(true)
       .networkRestriction(NetworkRestriction.NONE)
       .build()
-    val tileStyleLoadOptionsSatellite = TileRegionLoadOptions.Builder()
-      .geometry(Polygon.fromJson(polygonJsonString))
-      .descriptors(listOf(tilesetDescriptorForSatellite))
-      .acceptExpired(true)
-      .networkRestriction(NetworkRestriction.NONE)
-      .build()
-    val tileStyleLoadOptionsStreets = TileRegionLoadOptions.Builder()
-      .geometry(Polygon.fromJson(polygonJsonString))
-      .descriptors(listOf(tilesetDescriptorForStreets))
-      .acceptExpired(true)
-      .networkRestriction(NetworkRestriction.NONE)
-      .build()
+//    val tileStyleLoadOptionsSatellite = TileRegionLoadOptions.Builder()
+//      .geometry(Polygon.fromJson(polygonJsonString))
+//      .descriptors(listOf(tilesetDescriptorForSatellite))
+//      .acceptExpired(true)
+//      .networkRestriction(NetworkRestriction.NONE)
+//      .build()
+//    val tileStyleLoadOptionsStreets = TileRegionLoadOptions.Builder()
+//      .geometry(Polygon.fromJson(polygonJsonString))
+//      .descriptors(listOf(tilesetDescriptorForStreets))
+//      .acceptExpired(true)
+//      .networkRestriction(NetworkRestriction.NONE)
+//      .build()
 
     val tileRegionCancelable = tileStore.loadTileRegion(
       tileRegionId,
@@ -158,52 +158,52 @@ class OfflineLoader{
     ) { expected ->
       if (expected.isValue) {
         if(expected.value?.completedResourceCount == expected.value?.requiredResourceCount) {
-
+//          val stylePackCancelableSatellite = tileStore.loadTileRegion(
+//
+//            tileRegionId,
+//            // Build Style pack load options
+//            tileStyleLoadOptionsSatellite,
+//            { progress ->
+//              println("$progress style pack load option FOR  SATELLITE")
+//            },
+//          )
+//          { expected ->
+//            if (expected.isValue) {
+//              expected.value?.let { stylePack ->
+//                println("Existing style pack regions FOR  SATELLITE: $stylePack")
+//              }
+//            }
+//            expected.error?.let{
+//              println("$it.message")
+//            }
+//          }
+//
+//          val stylePackCancelableStreets = tileStore.loadTileRegion(
+//
+//            tileRegionId,
+//            // Build Style pack load options
+//            tileStyleLoadOptionsStreets,
+//            { progress ->
+//              println("$progress style pack load option FOR STREETS")
+//            },
+//          )
+//          { expected ->
+//            if (expected.isValue) {
+//              expected.value?.let { stylePack ->
+//                println("Existing style pack regions FOR STREETS: $stylePack")
+//              }
+//            }
+//            expected.error?.let{
+//              println("$it.message")
+//            }
+//          }
         println("Downloaded SuccessFully")
       }
      expected.error?.let{
        println("$it.message")
      }
     }}
-      val stylePackCancelableSatellite = tileStore.loadTileRegion(
 
-        tileRegionId,
-        // Build Style pack load options
-        tileStyleLoadOptionsSatellite,
-        { progress ->
-          println("$progress style pack load option FOR  SATELLITE")
-        },
-      )
-      { expected ->
-        if (expected.isValue) {
-          expected.value?.let { stylePack ->
-            println("Existing style pack regions FOR  SATELLITE: $stylePack")
-          }
-        }
-        expected.error?.let{
-          println("$it.message")
-        }
-      }
-
-      val stylePackCancelableStreets = tileStore.loadTileRegion(
-
-        tileRegionId,
-        // Build Style pack load options
-        tileStyleLoadOptionsStreets,
-        { progress ->
-          println("$progress style pack load option FOR STREETS")
-        },
-      )
-        { expected ->
-          if (expected.isValue) {
-            expected.value?.let { stylePack ->
-              println("Existing style pack regions FOR STREETS: $stylePack")
-            }
-          }
-          expected.error?.let{
-            println("$it.message")
-          }
-        }
 
 
 
