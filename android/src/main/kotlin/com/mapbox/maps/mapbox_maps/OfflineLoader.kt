@@ -138,7 +138,7 @@ class OfflineLoader{
       .build()
     val tileStyleLoadOptionsSatellite = TileRegionLoadOptions.Builder()
       .geometry(Polygon.fromJson(polygonJsonString))
-      .descriptor(listOf( tilesetDescriptorForSatellite))
+      .descriptor(listOf(tilesetDescriptorForSatellite))
       .acceptExpired(true)
       .networkRestriction(NetworkRestriction.NONE)
       .build()
@@ -148,6 +148,7 @@ class OfflineLoader{
       .acceptExpired(true)
       .networkRestriction(NetworkRestriction.NONE)
       .build()
+
     val tileRegionCancelable = tileStore.loadTileRegion(
       tileRegionId,
       tileRegionLoadOptions,
@@ -157,54 +158,55 @@ class OfflineLoader{
     ) { expected ->
       if (expected.isValue) {
         if(expected.value?.completedResourceCount == expected.value?.requiredResourceCount) {
-          val stylePackCancelableSatellite = offlineManager.loadTileRegion(
 
-            tileRegionId,
-            // Build Style pack load options
-            tileStyleLoadOptionsSatellite,
-            { progress ->
-              println("$progress style pack load option FOR  SATELLITE")
-            },
-
-            { expected ->
-              if (expected.isValue) {
-                expected.value?.let { stylePack ->
-                  println("Existing style pack regions FOR  SATELLITE: $stylePack")
-                }
-              }
-              else{
-                println("style pack download problem")
-              }
-            }
-          )
-          val stylePackCancelableStreets = offlineManager.loadTileRegion(
-
-            tileRegionId,
-            // Build Style pack load options
-            tileStyleLoadOptionsStreets,
-            { progress ->
-              println("$progress style pack load option FOR STREETS")
-            },
-
-            { expected ->
-              if (expected.isValue) {
-                expected.value?.let { stylePack ->
-                  println("Existing style pack regions FOR STREETS: $stylePack")
-                }
-              }
-              else{
-                println("style pack download problem")
-              }
-            }
-          )
-
-        }
         println("Downloaded SuccessFully")
       }
      expected.error?.let{
        println("$it.message")
      }
-    }
+    }}
+      val stylePackCancelableSatellite = tileStore.loadTileRegion(
+
+        tileRegionId,
+        // Build Style pack load options
+        tileStyleLoadOptionsSatellite,
+        { progress ->
+          println("$progress style pack load option FOR  SATELLITE")
+        },
+      )
+      { expected ->
+        if (expected.isValue) {
+          expected.value?.let { stylePack ->
+            println("Existing style pack regions FOR  SATELLITE: $stylePack")
+          }
+        }
+        expected.error?.let{
+          println("$it.message")
+        }
+      }
+
+      val stylePackCancelableStreets = tileStore.loadTileRegion(
+
+        tileRegionId,
+        // Build Style pack load options
+        tileStyleLoadOptionsStreets,
+        { progress ->
+          println("$progress style pack load option FOR STREETS")
+        },
+      )
+        { expected ->
+          if (expected.isValue) {
+            expected.value?.let { stylePack ->
+              println("Existing style pack regions FOR STREETS: $stylePack")
+            }
+          }
+          expected.error?.let{
+            println("$it.message")
+          }
+        }
+
+
+
 //    tileRegionCancelable.cancel()
     val tileRegionExisting =  tileStore.getAllTileRegions { expected ->
       if (expected.isValue) {
