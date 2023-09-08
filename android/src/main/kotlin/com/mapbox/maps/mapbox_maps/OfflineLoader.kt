@@ -158,45 +158,47 @@ class OfflineLoader{
     ) { expected ->
       if (expected.isValue) {
         if(expected.value?.completedResourceCount == expected.value?.requiredResourceCount) {
-//          val stylePackCancelableSatellite = tileStore.loadTileRegion(
-//
-//            tileRegionId,
-//            // Build Style pack load options
-//            tileStyleLoadOptionsSatellite,
-//            { progress ->
-//              println("$progress style pack load option FOR  SATELLITE")
-//            },
-//          )
-//          { expected ->
-//            if (expected.isValue) {
-//              expected.value?.let { stylePack ->
-//                println("Existing style pack regions FOR  SATELLITE: $stylePack")
-//              }
-//            }
-//            expected.error?.let{
-//              println("$it.message")
-//            }
-//          }
-//
-//          val stylePackCancelableStreets = tileStore.loadTileRegion(
-//
-//            tileRegionId,
-//            // Build Style pack load options
-//            tileStyleLoadOptionsStreets,
-//            { progress ->
-//              println("$progress style pack load option FOR STREETS")
-//            },
-//          )
-//          { expected ->
-//            if (expected.isValue) {
-//              expected.value?.let { stylePack ->
-//                println("Existing style pack regions FOR STREETS: $stylePack")
-//              }
-//            }
-//            expected.error?.let{
-//              println("$it.message")
-//            }
-//          }
+          val stylePackCancelableSatellite = offlineManager.loadStylePack(
+
+            Style.MAPBOX_STREETS,
+            // Build Style pack load options
+            tileStyleLoadOptions,
+            { progress ->
+              println("$progress style pack load option")
+            },
+
+            { expected ->
+              if (expected.isValue) {
+                expected.value?.let { stylePack ->
+                  println("Existing style pack regions: $stylePack")
+                }
+              }
+              else{
+                println("style pack download problem")
+              }
+            }
+          )
+          val stylePackCancelableStreets = offlineManager.loadStylePack(
+
+            Style.SATELLITE,
+            // Build Style pack load options
+            tileStyleLoadOptions,
+            { progress ->
+              println("$progress style pack load option")
+            },
+
+            { expected ->
+              if (expected.isValue) {
+                expected.value?.let { stylePack ->
+                  println("Existing style pack regions: $stylePack")
+                }
+              }
+              else{
+                println("style pack download problem")
+              }
+            }
+          )
+          }
         println("Downloaded SuccessFully")
       }
      expected.error?.let{
