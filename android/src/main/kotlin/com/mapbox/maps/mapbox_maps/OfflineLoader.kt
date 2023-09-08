@@ -136,13 +136,13 @@ class OfflineLoader{
       .acceptExpired(true)
       .networkRestriction(NetworkRestriction.NONE)
       .build()
-    val tileStyleLoadOptionsSatellite = StylePackLoadOptions.Builder()
+    val tileStyleLoadOptionsSatellite = TileRegionLoadOptions.Builder()
       .geometry(Polygon.fromJson(polygonJsonString))
       .descriptor(listOf( tilesetDescriptorForSatellite))
       .acceptExpired(true)
       .glyphsRasterizationMode(GlyphsRasterizationMode.IDEOGRAPHS_RASTERIZED_LOCALLY)
       .build()
-    val tileStyleLoadOptionsStreets = StylePackLoadOptions.Builder()
+    val tileStyleLoadOptionsStreets = TileRegionLoadOptions.Builder()
       .geometry(Polygon.fromJson(polygonJsonString))
       .descriptor(listOf(tilesetDescriptorForStreets))
       .acceptExpired(true)
@@ -157,9 +157,9 @@ class OfflineLoader{
     ) { expected ->
       if (expected.isValue) {
         if(expected.value?.completedResourceCount == expected.value?.requiredResourceCount) {
-          val stylePackCancelableSatellite = offlineManager.loadStylePack(
+          val stylePackCancelableSatellite = offlineManager.loadTileRegion(
 
-            Style.SATELLITE,
+            tileRegionId,
             // Build Style pack load options
             tileStyleLoadOptionsSatellite,
             { progress ->
@@ -177,9 +177,9 @@ class OfflineLoader{
               }
             }
           )
-          val stylePackCancelableStreets = offlineManager.loadStylePack(
+          val stylePackCancelableStreets = offlineManager.loadTileRegion(
 
-            Style.SATELLITE_STREETS,
+            tileRegionId,
             // Build Style pack load options
             tileStyleLoadOptionsStreets,
             { progress ->
