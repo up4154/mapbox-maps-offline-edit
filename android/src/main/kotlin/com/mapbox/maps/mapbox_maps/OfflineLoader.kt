@@ -140,13 +140,13 @@ class OfflineLoader{
       .geometry(Polygon.fromJson(polygonJsonString))
       .descriptor(listOf( tilesetDescriptorForSatellite))
       .acceptExpired(true)
-      .glyphsRasterizationMode(GlyphsRasterizationMode.IDEOGRAPHS_RASTERIZED_LOCALLY)
+      .networkRestriction(NetworkRestriction.NONE)
       .build()
     val tileStyleLoadOptionsStreets = TileRegionLoadOptions.Builder()
       .geometry(Polygon.fromJson(polygonJsonString))
       .descriptor(listOf(tilesetDescriptorForStreets))
       .acceptExpired(true)
-      .glyphsRasterizationMode(GlyphsRasterizationMode.IDEOGRAPHS_RASTERIZED_LOCALLY)
+      .networkRestriction(NetworkRestriction.NONE)
       .build()
     val tileRegionCancelable = tileStore.loadTileRegion(
       tileRegionId,
