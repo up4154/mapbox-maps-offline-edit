@@ -57,7 +57,7 @@ class OfflineLoader{
         .tilesets(tileUrlList)
         .minZoom(0)
         .maxZoom(22)
-        .pixelRatio(2f)
+        .pixelRatio(3f)
         .build()
     )
     var tilesetDescriptorForStyle: TilesetDescriptor = offlineManager.createTilesetDescriptor(
@@ -65,7 +65,7 @@ class OfflineLoader{
         .styleURI(Style.SATELLITE_STREETS)
         .minZoom(0)
         .maxZoom(22)
-        .pixelRatio(2f)
+        .pixelRatio(3f)
         .build()
     )
     val tileStore = TileStore.create().also {
