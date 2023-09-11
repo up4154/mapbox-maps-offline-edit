@@ -74,22 +74,19 @@ class OfflineLoader{
         .tilesets(tileUrlList)
         .minZoom(0)
         .maxZoom(22)
+        .pixelRatio(2f)
         .build()
+
     )
     var tilesetDescriptorForSatellite: TilesetDescriptor = offlineManager.createTilesetDescriptor(
       TilesetDescriptorOptions.Builder()
-        .styleURI(Style.SATELLITE)
+        .styleURI(Style.SATELLITE_STREETS)
         .minZoom(0)
         .maxZoom(22)
+        .pixelRatio(2f)
         .build()
     )
-    var tilesetDescriptorForStreets: TilesetDescriptor = offlineManager.createTilesetDescriptor(
-      TilesetDescriptorOptions.Builder()
-        .styleURI(Style.MAPBOX_STREETS)
-        .minZoom(0)
-        .maxZoom(22)
-        .build()
-    )
+
     val tileStore = TileStore.create().also {
       it.setOption(
         TileStoreOptions.MAPBOX_ACCESS_TOKEN,
@@ -153,31 +150,11 @@ class OfflineLoader{
         if(expected.value?.completedResourceCount == expected.value?.requiredResourceCount) {
           val stylePackCancelableSatellite = offlineManager.loadStylePack(
 
-            Style.SATELLITE,
-            // Build Style pack load options
-            tileStyleLoadOptions,
-            { progress ->
-              println("$progress style pack load option FOR  SATELLITE")
-            },
-
-            { expected ->
-              if (expected.isValue) {
-                expected.value?.let { stylePack ->
-                  println("Existing style pack regions: $stylePack")
-                }
-              }
-              else{
-                println("style pack download problem")
-              }
-            }
-          )
-          val stylePackCancelableStreets = offlineManager.loadStylePack(
-
             Style.SATELLITE_STREETS,
             // Build Style pack load options
             tileStyleLoadOptions,
             { progress ->
-              println("$progress style pack load option")
+              println("$progress style pack load option FOR  SATELLITE")
             },
 
             { expected ->
