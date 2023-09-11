@@ -43,23 +43,7 @@ import io.flutter.plugin.common.MethodChannel
 
 class OfflineLoader{
 
-//    val channel_name="offline_method_channel"
-//  override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) {
-//    super.configureFlutterEngine(flutterEngine)
-//    MethodChannel(
-//      flutterEngine.dartExecutor.binaryMessenger,
-//      channel_name
-//    ).setMethodCallHandler { call, result ->
-//      if (call.method == "cacheMapLayer") {
-//        cacheMapLayer()
-//        result.success("cache map layer called in  offline loader in kotlin")
-//      } else {
-//        result.notImplemented()
-//      }
-//    }
-//  }
-//  private val context:Context
-//  private val mapView: MapView = MapView(context)
+
 
   fun cacheMapLayer(context:Context):String
   {
@@ -73,13 +57,15 @@ class OfflineLoader{
         .tilesets(tileUrlList)
         .minZoom(0)
         .maxZoom(22)
+        .pixelRatio(2f)
         .build()
     )
     var tilesetDescriptorForStyle: TilesetDescriptor = offlineManager.createTilesetDescriptor(
       TilesetDescriptorOptions.Builder()
-        .styleURI(Style.MAPBOX_STREETS)
+        .styleURI(Style.SATELLITE_STREETS)
         .minZoom(0)
         .maxZoom(22)
+        .pixelRatio(2f)
         .build()
     )
     val tileStore = TileStore.create().also {
@@ -146,7 +132,7 @@ class OfflineLoader{
         if(expected.value?.completedResourceCount == expected.value?.requiredResourceCount) {
           val stylePackCancelable = offlineManager.loadStylePack(
 
-            Style.MAPBOX_STREETS,
+            Style.SATELLITE_STREETS,
             // Build Style pack load options
             tileStyleLoadOptions,
             { progress ->
