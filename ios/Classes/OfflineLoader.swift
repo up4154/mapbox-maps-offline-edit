@@ -1,14 +1,18 @@
 
-@_spi(Experimental) import MapboxMaps
 
 import Foundation
+import MapboxMaps
 
 class OfflineLoader {
 
 
-func cacheMapLayer(){
-    print("Hello for cache map layer")
-}
+func cacheMapLayer() -> String {
+        print("cache map layer is called in Swift OfflineLoader")
+
+
+
+        return "cache map layer success"
+    }
 
 //    fun cacheMapLayer(){
 //
