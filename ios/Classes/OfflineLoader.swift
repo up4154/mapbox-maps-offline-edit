@@ -1,15 +1,7 @@
-//
-//  TileCacheManager.swift
-//  IVMS
-//
-//  Created by Siddharth Pugalia on 17/06/23.
-//
+
 
 import Foundation
-import MapboxCommon
-import MapboxMaps
-import GCDWebServer
-import SQLite3
+
 import ADPUtilities
 class OfflineLoader {
 
