@@ -1,5 +1,5 @@
 
-import MapboxMaps
+@_spi(Experimental) import MapboxMaps
 
 import Foundation
 
