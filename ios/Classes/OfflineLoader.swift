@@ -14,7 +14,7 @@ import ADPUtilities
 class OfflineLoader {
 
 
-fun cacheMapLayer(){
+func cacheMapLayer(){
     print("Hello for cache map layer")
 }
 
