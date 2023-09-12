@@ -1,7 +1,7 @@
 
 
 import Foundation
-import MapboxMaps
+import MapboxCommon
 
 class OfflineLoader {
 
