@@ -8,9 +8,7 @@
 import Foundation
 import MapboxCommon
 import MapboxMaps
-import GCDWebServer
-import SQLite3
-import ADPUtilities
+
 class TileCacheManager {
 
 
