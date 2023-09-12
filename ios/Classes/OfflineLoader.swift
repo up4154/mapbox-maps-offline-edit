@@ -5,9 +5,11 @@ import MapboxMaps
 class OfflineLoader {
 
 
-   func cacheMapLayer(){
+   func cacheMapLayer()-> String{
+
 
   print("hello from cacheMapLayer")
+  return "hello form cache map layer"
   }
 
 }
