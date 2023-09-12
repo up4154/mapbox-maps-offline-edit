@@ -9,7 +9,7 @@ import Foundation
 import MapboxCommon
 import MapboxMaps
 
-class TileCacheManager {
+class OfflineLoader {
 
 
    fun cacheMapLayer(){
