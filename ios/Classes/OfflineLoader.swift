@@ -5,7 +5,7 @@ import MapboxMaps
 class OfflineLoader {
 
 
-   fun cacheMapLayer(){
+   func cacheMapLayer(){
 
   print("hello from cacheMapLayer")
   }
