@@ -1,11 +1,10 @@
 
 import Foundation
-import MapboxMaps
-import Turf
-class OfflineLoader {
+
+public class OfflineLoader {
 
 
-func cacheMapLayer() -> String {
+public static func cacheMapLayer() -> String {
         print("cache map layer is called in Swift OfflineLoader")
 
 
