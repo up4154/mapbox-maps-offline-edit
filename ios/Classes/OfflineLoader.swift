@@ -2,7 +2,6 @@
 
 import Foundation
 
-import ADPUtilities
 class OfflineLoader {
 
 
