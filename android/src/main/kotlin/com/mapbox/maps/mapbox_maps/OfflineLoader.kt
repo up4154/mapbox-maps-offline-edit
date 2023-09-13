@@ -49,6 +49,8 @@ class OfflineLoader{
   {
     println("cache map layer in called in offline controller")
     val tileUrlList = arrayListOf<String>()
+
+    tileUrlList.add("mapbox://mapbox.mapbox-streets-v8")
     tileUrlList.add("mapbox://mapbox.mapbox-traffic-v1")
     tileUrlList.add("mapbox://mapbox.mapbox-terrain-v2")
     tileUrlList.add("mapbox://mapbox.country-boundaries-v1")
