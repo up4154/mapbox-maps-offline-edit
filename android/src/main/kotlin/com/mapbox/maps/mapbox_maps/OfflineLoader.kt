@@ -50,10 +50,10 @@ class OfflineLoader{
     println("cache map layer in called in offline controller")
     val tileUrlList = arrayListOf<String>()
 
-    tileUrlList.add("mapbox://mapbox.mapbox-streets-v8")
-    tileUrlList.add("mapbox://mapbox.mapbox-traffic-v1")
-    tileUrlList.add("mapbox://mapbox.mapbox-terrain-v2")
-    tileUrlList.add("mapbox://mapbox.country-boundaries-v1")
+//    tileUrlList.add("mapbox://mapbox.mapbox-streets-v8")
+//    tileUrlList.add("mapbox://mapbox.mapbox-traffic-v1")
+//    tileUrlList.add("mapbox://mapbox.mapbox-terrain-v2")
+    tileUrlList.add("mapbox://ct_avista_env_whitelabeled_sh-9mf7fu")
     println("tile url list = $tileUrlList")
     var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(context))
     var tilesetDescriptorLines: TilesetDescriptor = offlineManager.createTilesetDescriptor(
@@ -113,7 +113,7 @@ class OfflineLoader{
     }
 """.trimIndent()
 
-    val tileRegionId = "Some Random String"
+    val tileRegionId = "aidash-ivms.caog4kh5"
     val tileRegionLoadOptions = TileRegionLoadOptions.Builder()
       .geometry(Polygon.fromJson(polygonJsonString))
       .descriptors(listOf( tilesetDescriptorLines,tilesetDescriptorForStyle))
