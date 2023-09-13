@@ -53,7 +53,7 @@ class OfflineLoader{
 //    tileUrlList.add("mapbox://mapbox.mapbox-streets-v8")
 //    tileUrlList.add("mapbox://mapbox.mapbox-traffic-v1")
 //    tileUrlList.add("mapbox://mapbox.mapbox-terrain-v2")
-    tileUrlList.add("mapbox://ct_avista_env_whitelabeled_sh-9mf7fu")
+    tileUrlList.add("mapbox://aidash-ivms.caog4kh5")
     println("tile url list = $tileUrlList")
     var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(context))
     var tilesetDescriptorLines: TilesetDescriptor = offlineManager.createTilesetDescriptor(
