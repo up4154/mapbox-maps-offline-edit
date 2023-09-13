@@ -51,6 +51,7 @@ class OfflineLoader{
     val tileUrlList = arrayListOf<String>()
     tileUrlList.add("mapbox://mapbox.mapbox-traffic-v1")
     tileUrlList.add("mapbox://mapbox.mapbox-terrain-v2")
+    println(tileUrlList)
     var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(context))
     var tilesetDescriptorLines: TilesetDescriptor = offlineManager.createTilesetDescriptor(
       TilesetDescriptorOptionsForTilesets.Builder()
