@@ -49,8 +49,8 @@ class OfflineLoader{
   {
     println("cache map layer in called in offline controller")
     val tileUrlList = arrayListOf<String>()
-    tileUrlList.add("mapbox://mapbox.mapbox-traffic-v1")
-//    tileUrlList.add("mapbox://mapbox.mapbox-terrain-v2")
+//    tileUrlList.add("mapbox://mapbox.mapbox-traffic-v1")
+    tileUrlList.add("mapbox://mapbox.mapbox-terrain-v2")
     println("tile url list = $tileUrlList")
     var offlineManager: OfflineManager = OfflineManager(MapInitOptions.getDefaultResourceOptions(context))
     var tilesetDescriptorLines: TilesetDescriptor = offlineManager.createTilesetDescriptor(
@@ -64,7 +64,7 @@ class OfflineLoader{
 
     var tilesetDescriptorForStyle: TilesetDescriptor = offlineManager.createTilesetDescriptor(
       TilesetDescriptorOptions.Builder()
-        .styleURI(Style.MAPBOX_STREETS)
+        .styleURI(Style.SATELLITE_STREETS)
         .minZoom(0)
         .maxZoom(22)
         .pixelRatio(2f)
@@ -134,7 +134,7 @@ class OfflineLoader{
         if(expected.value?.completedResourceCount == expected.value?.requiredResourceCount) {
           val stylePackCancelable = offlineManager.loadStylePack(
 
-            Style.MAPBOX_STREETS,
+            Style.SATELLITE_STREETS,
             // Build Style pack load options
             tileStyleLoadOptions,
             { progress ->
