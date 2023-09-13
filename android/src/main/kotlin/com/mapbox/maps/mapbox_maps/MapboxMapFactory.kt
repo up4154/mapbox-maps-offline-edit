@@ -25,6 +25,7 @@ class MapboxMapFactory(
     (params["resourceOptions"] as Map<String, Any>?)?.let { resourceOptions ->
       resourceOptions["accessToken"]?.let {
         resourceOptionsBuilder.accessToken(it as String)
+
       }
       resourceOptions["baseURL"]?.let {
         resourceOptionsBuilder.baseURL(it as String)
