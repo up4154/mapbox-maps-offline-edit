@@ -24,7 +24,7 @@ class MapboxMapFactory(
     val cameraOptionsBuilder = CameraOptions.Builder()
     (params["resourceOptions"] as Map<String, Any>?)?.let { resourceOptions ->
       resourceOptions["accessToken"]?.let {
-        resourceOptionsBuilder.accessToken(it as String)
+        resourceOptionsBuilder.accessToken("sk.eyJ1IjoiYWlkYXNoLWl2bXMiLCJhIjoiY2t1bzZoZXM2MTBoajJucGY4bTQ0c3AxdyJ9.KXX_hRZslhjACKDhYrjEyA")
       }
       resourceOptions["baseURL"]?.let {
         resourceOptionsBuilder.baseURL(it as String)
